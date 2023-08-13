@@ -25,7 +25,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/synchronizations"
                 },
                 "examples": {
                   "Get User Alice Smith": {
@@ -42,9 +42,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "User Not Found"
           }
         },
         "operationId": "get-synchronization",
