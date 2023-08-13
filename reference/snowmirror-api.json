@@ -75,8 +75,8 @@
   },
   "components": {
     "schemas": {
-      "User": {
-        "title": "User",
+      "synchronizations": {
+        "title": "Synchronizations",
         "type": "object",
         "description": "",
         "x-examples": {
@@ -126,7 +126,10 @@
           "lastName",
           "email",
           "emailVerified"
-        ]
+        ],
+        "x-stoplight": {
+          "id": "b5d7c06caa157"
+        }
       }
     },
     "securitySchemes": {
