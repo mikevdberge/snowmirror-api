@@ -52,6 +52,7 @@
       },
       "post": {
         "summary": "Creates a new synchronization",
+        "x-speakeasy-entity-operation": "synchronizations#create",
         "operationId": "post-synchronization",
         "responses": {
           "200": {
