@@ -14,24 +14,14 @@
     }
   ],
   "paths": {
-    "/users/{userId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "userId",
-          "in": "path",
-          "required": true,
-          "description": "Id of an existing user."
-        }
-      ],
+    "/synchronization": {
+      "parameters": [],
       "get": {
-        "summary": "Get User Info by User ID",
+        "summary": "Get a list of all synchronizations.",
         "tags": [],
         "responses": {
           "200": {
-            "description": "User Found",
+            "description": "A list of synchronizations was successfully retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -57,8 +47,8 @@
             "description": "User Not Found"
           }
         },
-        "operationId": "get-users-userId",
-        "description": "Retrieve the information of the user with the matching user ID."
+        "operationId": "get-synchronization",
+        "description": "Returns a list of all synchronizations."
       },
       "patch": {
         "summary": "Update User Information",
@@ -142,8 +132,8 @@
     },
     "/user": {
       "post": {
-        "summary": "Create New User",
-        "operationId": "post-user",
+        "summary": "Creates a new synchronization",
+        "operationId": "post-synchronization",
         "responses": {
           "200": {
             "description": "User Created",
@@ -216,7 +206,7 @@
           },
           "description": "Post the necessary fields for the API to create a new user."
         },
-        "description": "Create a new user."
+        "description": "Creates a new synchronization. Returns newly created synchronization including its ID."
       }
     }
   },
