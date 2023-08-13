@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:9090"
+      "url": "http://localhost:9090/api/v1"
     }
   ],
   "paths": {
@@ -67,6 +67,19 @@
           }
         },
         "description": "Deletes synchronizations. To be able to delete a synchronization it must not be running."
+      }
+    },
+    "/synchronization/export": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-synchronizations-export",
+        "description": "Exports all synchronizations and their settings.\n\nIt does not export activity logs. If you import them to some other environment, you should run the synchronizations from scratch. It does not export global setting (Settings → General Settings nor Settings → Advanced Properties)."
       }
     }
   },
