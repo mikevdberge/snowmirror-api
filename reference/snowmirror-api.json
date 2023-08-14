@@ -6,7 +6,11 @@
   "info": {
     "title": "snowmirror-api",
     "version": "1.0",
-    "description": "This document is a guide which will walk you through SnowMirror REST API. The purpose of the REST API is to allow developers to integrate SnowMirror with other applications.\n\n1.1. URIs of REST API Resources\nThe API consists of resources identified by URIs. To call the API you have to make HTTP requests on the provided URIs. The URIs have following structure:\n\nhttp://{hostname}:{port}/api/{api-version}/{resource-name}\n\nhostname - name of the server where SnowMirror is running\n\nport - port on which SnowMirror is running\n\napi-version - version of API to use. Currently \"v1\" is the only option available. In future releases a version may increase\n\nresource-name - name of the resource you need to operate on. The resources are described in the following chapter\n\nLet’s say you need to get information about a synchronization. Then you will have to make GET HTTP request on a resource called http://yourSnowMirrorServer:9090/api/v1/synchronization\nAlso note that resources are secured. Please see Authentication and Security chapter for details."
+    "description": "This document is a guide which will walk you through SnowMirror REST API. The purpose of the REST API is to allow developers to integrate SnowMirror with other applications.\n\n1.1. URIs of REST API Resources\nThe API consists of resources identified by URIs. To call the API you have to make HTTP requests on the provided URIs. The URIs have following structure:\n\nhttp://{hostname}:{port}/api/{api-version}/{resource-name}\n\nhostname - name of the server where SnowMirror is running\n\nport - port on which SnowMirror is running\n\napi-version - version of API to use. Currently \"v1\" is the only option available. In future releases a version may increase\n\nresource-name - name of the resource you need to operate on. The resources are described in the following chapter\n\nLet’s say you need to get information about a synchronization. Then you will have to make GET HTTP request on a resource called http://yourSnowMirrorServer:9090/api/v1/synchronization\nAlso note that resources are secured. Please see Authentication and Security chapter for details.",
+    "contact": {
+      "name": " GuideVision",
+      "url": "https://www.snow-mirror.com/doc/RestApiGuide.html"
+    }
   },
   "servers": [
     {
@@ -26,18 +30,343 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/synchronization"
+                  "type": "object",
+                  "properties": {
+                    "syncs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "table": {
+                            "type": "string"
+                          },
+                          "mirrorTable": {
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          "columns": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "sysId": {
+                                  "type": "string"
+                                },
+                                "prefix": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "allowInheritedColumns": {
+                            "type": "boolean"
+                          },
+                          "referenceFieldType": {
+                            "type": "string"
+                          },
+                          "autoSchemaUpdate": {
+                            "type": "boolean"
+                          },
+                          "encodedQuery": {
+                            "type": "null"
+                          },
+                          "deleteStrategy": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "scheduler": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "beginDate": {
+                                "type": "string"
+                              },
+                              "time": {
+                                "type": "string"
+                              },
+                              "visible": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "fullLoadScheduler": {
+                            "type": [
+                              "null",
+                              "object"
+                            ],
+                            "properties": {
+                              "executionType": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "beginDate": {
+                                "type": "string"
+                              },
+                              "time": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "schedulerPriority": {
+                            "type": "string"
+                          },
+                          "view": {
+                            "type": "string"
+                          },
+                          "backup": {
+                            "type": "string"
+                          },
+                          "synchronizationType": {
+                            "type": "null"
+                          },
+                          "masterTable": {
+                            "type": "null"
+                          },
+                          "attachmentDirectory": {
+                            "type": "null"
+                          },
+                          "retentionPeriod": {
+                            "type": "integer"
+                          },
+                          "format": {
+                            "type": "string"
+                          },
+                          "updateBeforeSynchronizationRun": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "syncs": [
+                        {
+                          "id": 24,
+                          "name": "incident",
+                          "table": "incident",
+                          "mirrorTable": "incident",
+                          "columns": [
+                            {
+                              "name": "active",
+                              "sysId": "8f2f4b99e1031100a24720593d95f563"
+                            },
+                            {
+                              "name": "sys_id",
+                              "sysId": "3a3f8b99e1031100a24720593d95f5d5"
+                            }
+                          ],
+                          "allowInheritedColumns": true,
+                          "referenceFieldType": "BOTH",
+                          "autoSchemaUpdate": false,
+                          "encodedQuery": null,
+                          "deleteStrategy": "AUDIT",
+                          "active": true,
+                          "scheduler": {
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07"
+                          },
+                          "fullLoadScheduler": {
+                            "executionType": "CLEAN_AND_SYNCHRONIZE",
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07"
+                          },
+                          "schedulerPriority": "NORMAL"
+                        },
+                        {
+                          "id": 25,
+                          "name": "incident_sla",
+                          "view": "incident_sla",
+                          "mirrorTable": "incident_sla",
+                          "columns": [
+                            {
+                              "prefix": "taskslatable",
+                              "name": "taskslatable_sla",
+                              "sysId": "d9719f5de1031100a24720593d95f53b"
+                            },
+                            {
+                              "prefix": "inc",
+                              "name": "inc_priority",
+                              "sysId": "c72f4b99e1031100a24720593d95f56d"
+                            }
+                          ],
+                          "allowInheritedColumns": false,
+                          "referenceFieldType": "BOTH",
+                          "autoSchemaUpdate": false,
+                          "encodedQuery": null,
+                          "deleteStrategy": "TRUNCATE",
+                          "active": true,
+                          "scheduler": {
+                            "type": "DAILY",
+                            "beginDate": "2014-08-07",
+                            "time": "00:00"
+                          },
+                          "fullLoadScheduler": {
+                            "executionType": "CLEAN_AND_SYNCHRONIZE",
+                            "type": "DAILY",
+                            "beginDate": "2014-08-07",
+                            "time": "00:00"
+                          },
+                          "schedulerPriority": "NORMAL"
+                        },
+                        {
+                          "id": 2,
+                          "name": "u_rest_test_table_backup-ecf7afd3902e46aabc6b4266ae20f694",
+                          "backup": "u_rest_test_table",
+                          "mirrorTable": null,
+                          "columns": [
+                            {
+                              "name": "sys_id",
+                              "sysId": "d58564b74ff112002a9053418110c7d2"
+                            }
+                          ],
+                          "allowInheritedColumns": false,
+                          "autoSchemaUpdate": false,
+                          "referenceFieldType": "SYS_IDS",
+                          "encodedQuery": null,
+                          "deleteStrategy": "NONE",
+                          "active": true,
+                          "scheduler": {
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07",
+                            "time": "04:00",
+                            "visible": false
+                          },
+                          "fullLoadScheduler": null,
+                          "schedulerPriority": "NORMAL",
+                          "synchronizationType": null,
+                          "masterTable": null,
+                          "attachmentDirectory": null,
+                          "retentionPeriod": 30,
+                          "format": "CSV",
+                          "updateBeforeSynchronizationRun": false
+                        }
+                      ]
+                    }
+                  }
                 },
                 "examples": {
-                  "Get User Alice Smith": {
+                  "Get all synchronizations": {
                     "value": {
-                      "id": 142,
-                      "firstName": "Alice",
-                      "lastName": "Smith",
-                      "email": "alice.smith@gmail.com",
-                      "dateOfBirth": "1997-10-31",
-                      "emailVerified": true,
-                      "signUpDate": "2019-08-24"
+                      "syncs": [
+                        {
+                          "id": 24,
+                          "name": "incident",
+                          "table": "incident",
+                          "mirrorTable": "incident",
+                          "columns": [
+                            {
+                              "name": "active",
+                              "sysId": "8f2f4b99e1031100a24720593d95f563"
+                            },
+                            {
+                              "name": "sys_id",
+                              "sysId": "3a3f8b99e1031100a24720593d95f5d5"
+                            }
+                          ],
+                          "allowInheritedColumns": true,
+                          "referenceFieldType": "BOTH",
+                          "autoSchemaUpdate": false,
+                          "encodedQuery": null,
+                          "deleteStrategy": "AUDIT",
+                          "active": true,
+                          "scheduler": {
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07"
+                          },
+                          "fullLoadScheduler": {
+                            "executionType": "CLEAN_AND_SYNCHRONIZE",
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07"
+                          },
+                          "schedulerPriority": "NORMAL"
+                        },
+                        {
+                          "id": 25,
+                          "name": "incident_sla",
+                          "view": "incident_sla",
+                          "mirrorTable": "incident_sla",
+                          "columns": [
+                            {
+                              "prefix": "taskslatable",
+                              "name": "taskslatable_sla",
+                              "sysId": "d9719f5de1031100a24720593d95f53b"
+                            },
+                            {
+                              "prefix": "inc",
+                              "name": "inc_priority",
+                              "sysId": "c72f4b99e1031100a24720593d95f56d"
+                            }
+                          ],
+                          "allowInheritedColumns": false,
+                          "referenceFieldType": "BOTH",
+                          "autoSchemaUpdate": false,
+                          "encodedQuery": null,
+                          "deleteStrategy": "TRUNCATE",
+                          "active": true,
+                          "scheduler": {
+                            "type": "DAILY",
+                            "beginDate": "2014-08-07",
+                            "time": "00:00"
+                          },
+                          "fullLoadScheduler": {
+                            "executionType": "CLEAN_AND_SYNCHRONIZE",
+                            "type": "DAILY",
+                            "beginDate": "2014-08-07",
+                            "time": "00:00"
+                          },
+                          "schedulerPriority": "NORMAL"
+                        },
+                        {
+                          "id": 2,
+                          "name": "u_rest_test_table_backup-ecf7afd3902e46aabc6b4266ae20f694",
+                          "backup": "u_rest_test_table",
+                          "mirrorTable": null,
+                          "columns": [
+                            {
+                              "name": "sys_id",
+                              "sysId": "d58564b74ff112002a9053418110c7d2"
+                            }
+                          ],
+                          "allowInheritedColumns": false,
+                          "autoSchemaUpdate": false,
+                          "referenceFieldType": "SYS_IDS",
+                          "encodedQuery": null,
+                          "deleteStrategy": "NONE",
+                          "active": true,
+                          "scheduler": {
+                            "type": "MANUALLY",
+                            "beginDate": "2014-08-07",
+                            "time": "04:00",
+                            "visible": false
+                          },
+                          "fullLoadScheduler": null,
+                          "schedulerPriority": "NORMAL",
+                          "synchronizationType": null,
+                          "masterTable": null,
+                          "attachmentDirectory": null,
+                          "retentionPeriod": 30,
+                          "format": "CSV",
+                          "updateBeforeSynchronizationRun": false
+                        }
+                      ]
                     }
                   }
                 }
