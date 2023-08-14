@@ -136,6 +136,11 @@
                         }
                       ]
                     }
+                  },
+                  "properties": {
+                    "sync": {
+                      "$ref": "#/components/schemas/synchronizations"
+                    }
                   }
                 },
                 "examples": {
