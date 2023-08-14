@@ -195,10 +195,7 @@
                           },
                           "deleteStrategy": {
                             "type": "string"
-                          },
-                          "active": {
-                            "type": "boolean"
-                          }                          
+                          }                        
                         }
                       }
                     }
