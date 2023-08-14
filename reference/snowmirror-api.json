@@ -789,5 +789,10 @@
         "scheme": "basic"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "basic-authentication": []
+    }
+  ]
 }
