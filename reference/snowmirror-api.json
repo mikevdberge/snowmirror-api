@@ -1052,7 +1052,6 @@
             }
           }
         },
-        "x-speakeasy-entity-operation": "Synchronization",
         "title": "Synchronization"
       }
     },
