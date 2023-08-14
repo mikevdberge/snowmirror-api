@@ -191,7 +191,7 @@
                             "type": "boolean"
                           },
                           "encodedQuery": {
-                            "type": "null"
+                            "type": "string"
                           },
                           "deleteStrategy": {
                             "type": "string"
