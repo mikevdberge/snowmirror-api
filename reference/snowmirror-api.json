@@ -139,95 +139,7 @@
                   },
                   "properties": {
                     "sync": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "table": {
-                            "type": "string"
-                          },
-                          "view": {
-                            "type": "string"
-                          },
-                          "attachment": {
-                            "type": "string"
-                          },
-                          "backup": {
-                            "type": "string"
-                          },
-                          "backupAttachment": {
-                            "type": "string"
-                          },
-                          "mirrorTable": {
-                            "type": "string"
-                          },
-                          "columns": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "prefix": {
-                                  "type": "string"
-                                },
-                                "name": {
-                                  "type": "string"
-                                },
-                                "sysId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "allowInheritedColumns": {
-                            "type": "boolean"
-                          },
-                          "referenceFieldType": {
-                            "type": "string"
-                          },
-                          "autoSchemaUpdate": {
-                            "type": "boolean"
-                          },
-                          "encodedQuery": {
-                            "type": "string"
-                          },
-                          "deleteStrategy": {
-                            "type": "string"
-                          },
-                          "active": {
-                            "type": "boolean"
-                          },
-                          "scheduler": {
-                            "type": "object",
-                            "scheduletype": {
-                              "type": "string"
-                            },
-                            "beginDate": {
-                              "type": "string"
-                            }
-                          },
-                          "fullLoadscheduler": {
-                            "type": "object",
-                            "executionType": {
-                              "type": "string"
-                            },
-                            "scheduleType": {
-                              "type": "string"
-                            },
-                            "beginDate": {
-                              "type": "string"
-                            }
-                          },
-                          "schedulerPriority": {
-                            "type": "boolean"
-                          }
-                        }
-                      }
+                      "$ref": "#/components/schemas/synchronizations"
                     }
                   }
                 }
@@ -310,97 +222,97 @@
       "synchronizations": {
         "type": "object",
         "properties": {
-                    "sync": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "table": {
-                            "type": "string"
-                          },
-                          "view": {
-                            "type": "string"
-                          },
-                          "attachment": {
-                            "type": "string"
-                          },
-                          "backup": {
-                            "type": "string"
-                          },
-                          "backupAttachment": {
-                            "type": "string"
-                          },
-                          "mirrorTable": {
-                            "type": "string"
-                          },
-                          "columns": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "prefix": {
-                                  "type": "string"
-                                },
-                                "name": {
-                                  "type": "string"
-                                },
-                                "sysId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "allowInheritedColumns": {
-                            "type": "boolean"
-                          },
-                          "referenceFieldType": {
-                            "type": "string"
-                          },
-                          "autoSchemaUpdate": {
-                            "type": "boolean"
-                          },
-                          "encodedQuery": {
-                            "type": "string"
-                          },
-                          "deleteStrategy": {
-                            "type": "string"
-                          },
-                          "active": {
-                            "type": "boolean"
-                          },
-                          "scheduler": {
-                            "type": "object",
-                            "scheduletype": {
-                              "type": "string"
-                            },
-                            "beginDate": {
-                              "type": "string"
-                            }
-                          },
-                          "fullLoadscheduler": {
-                            "type": "object",
-                            "executionType": {
-                              "type": "string"
-                            },
-                            "scheduleType": {
-                              "type": "string"
-                            },
-                            "beginDate": {
-                              "type": "string"
-                            }
-                          },
-                          "schedulerPriority": {
-                            "type": "boolean"
-                          }
-                        }
+          "sync": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "table": {
+                  "type": "string"
+                },
+                "view": {
+                  "type": "string"
+                },
+                "attachment": {
+                  "type": "string"
+                },
+                "backup": {
+                  "type": "string"
+                },
+                "backupAttachment": {
+                  "type": "string"
+                },
+                "mirrorTable": {
+                  "type": "string"
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "prefix": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "sysId": {
+                        "type": "string"
                       }
                     }
+                  }
+                },
+                "allowInheritedColumns": {
+                  "type": "boolean"
+                },
+                "referenceFieldType": {
+                  "type": "string"
+                },
+                "autoSchemaUpdate": {
+                  "type": "boolean"
+                },
+                "encodedQuery": {
+                  "type": "string"
+                },
+                "deleteStrategy": {
+                  "type": "string"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "scheduler": {
+                  "type": "object",
+                  "scheduletype": {
+                    "type": "string"
+                  },
+                  "beginDate": {
+                    "type": "string"
+                  }
+                },
+                "fullLoadscheduler": {
+                  "type": "object",
+                  "executionType": {
+                    "type": "string"
+                  },
+                  "scheduleType": {
+                    "type": "string"
+                  },
+                  "beginDate": {
+                    "type": "string"
+                  }
+                },
+                "schedulerPriority": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
         },
         "x-examples": {
           "Example 1": {
