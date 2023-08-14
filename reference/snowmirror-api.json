@@ -189,7 +189,13 @@
                           },
                           "autoSchemaUpdate": {
                             "type": "boolean"
-                          }
+                          },
+                          "encodedQuery": {
+                            "type": "null"
+                          },
+                          "deleteStrategy": {
+                            "type": "string"
+                          }   
                         }
                       }
                     }
