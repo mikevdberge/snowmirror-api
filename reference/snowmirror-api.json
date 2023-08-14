@@ -139,31 +139,19 @@
                   },
                   "properties": {
                     "sync": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "view": {
-                          "type": "string"
-                        },
-                        "table": {
-                          "type": "string"
-                        },
-                        "attachment": {
-                          "type": "string"
-                        },
-                        "backup": {
-                          "type": "string"
-                        },
-                        "backupAttachment": {
-                          "type": "string"
-                        },
-                        "mirrorTable": {
-                          "type": "string"
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "table": {
+                            "type": "string"
+                          }
                         }
                       }
                     }
