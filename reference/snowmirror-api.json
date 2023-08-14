@@ -33,7 +33,6 @@
       "parameters": [],
       "get": {
         "summary": "Get a list of all synchronizations.",
-        "x-speakeasy-entity-operation": "Synchronization#get",
         "tags": [
           "synchronization"
         ],
