@@ -10,7 +10,8 @@
     "contact": {
       "name": " GuideVision",
       "url": "https://www.snow-mirror.com/doc/RestApiGuide.html"
-    }
+    },
+    "summary": "The purpose of the REST API is to allow developers to integrate SnowMirror with other applications."
   },
   "servers": [
     {
@@ -319,7 +320,8 @@
             }
           }
         },
-        "x-speakeasy-entity-operation": "Synchronization-Action#create"
+        "x-speakeasy-entity-operation": "Synchronization-Action#create",
+        "description": "Performs an action on the selected synchronizations.\nAPI ignores synchronizations which are already running. It also ignores synchronizations which are deactivated.\nAvailable actions are \"SYNCHRONIZE\", \"CLEAN_AND_SYNCHRONIZE\", \"DIFFERENTIAL_SYNCHRONIZATION\", \"STOP\""
       }
     }
   },
