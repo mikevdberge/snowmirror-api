@@ -59,7 +59,7 @@ paths:
               $ref: '#/components/schemas/Pet'
   /pet/{petId}:
     get:
-      x-speakeasy-entity-operation: Pet#read
+      x-speakeasy-entity-operation: Pet#get
       tags:
         - pet
       summary: Find pet by ID
