@@ -152,6 +152,15 @@
                           "table": {
                             "type": "string"
                           },
+                          "view": {
+                            "type": "string"
+                          },
+                          "attachment": {
+                            "type": "string"
+                          },
+                          "backup": {
+                            "type": "string"
+                          },
                           "columns": {
                             "type": "array",
                             "items": {
