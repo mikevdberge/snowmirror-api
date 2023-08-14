@@ -161,6 +161,9 @@
                           "backup": {
                             "type": "string"
                           },
+                          "backupAttachment": {
+                            "type": "string"
+                          },                          
                           "columns": {
                             "type": "array",
                             "items": {
