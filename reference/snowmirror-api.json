@@ -180,7 +180,21 @@
                                 }
                               }
                             }
-                          }
+                          },
+                          "columnstoExclude": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "sysId": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }                          
                         }
                       }
                     }
