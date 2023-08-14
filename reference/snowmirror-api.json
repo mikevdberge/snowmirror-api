@@ -100,22 +100,6 @@
         "description": "Deletes synchronizations. To be able to delete a synchronization it must not be running."
       }
     },
-    "/synchronization/export": {
-      "get": {
-        "tags": [
-          "synchronization"
-        ],
-        "summary": "Your GET endpoint",
-        "x-speakeasy-entity-operation": "Synchronization-Export#get",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "operationId": "get-synchronizations-export",
-        "description": "Exports all synchronizations and their settings.\n\nIt does not export activity logs. If you import them to some other environment, you should run the synchronizations from scratch. It does not export global setting (Settings → General Settings nor Settings → Advanced Properties)."
-      }
-    },
     "/synchronization/action": {
       "get": {
         "summary": "Your GET endpoint",
@@ -247,7 +231,7 @@
   "components": {
     "schemas": {
       "synchronizations": {
-      "x-speakeasy-entity": "Synchronization",  
+        "x-speakeasy-entity": "Synchronization",
         "type": "object",
         "properties": {
           "sync": {
