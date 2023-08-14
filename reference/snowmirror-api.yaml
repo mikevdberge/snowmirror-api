@@ -41,7 +41,7 @@ paths:
       summary: Get a list of all synchronizations.
       tags:
         - synchronization
-      x-speakeasy-entity-operation: Synchronization#get
+#      x-speakeasy-entity-operation: Synchronization#get
       responses:
         '200':
           description: OK
@@ -59,7 +59,7 @@ paths:
       tags:
         - synchronization
       summary: Creates a new synchronization
-      x-speakeasy-entity-operation: Synchronization#create
+#      x-speakeasy-entity-operation: Synchronization#create
       operationId: post-synchronization
       responses:
         '200':
@@ -106,7 +106,7 @@ paths:
       tags:
         - synchronization
       summary: Deletes synchronizations
-      x-speakeasy-entity-operation: Synchronization#delete
+#      x-speakeasy-entity-operation: Synchronization#delete
       operationId: delete-synchronization
       responses:
         '200':
@@ -204,7 +204,7 @@ paths:
 components:
   schemas:
     synchronization:
-      x-speakeasy-entity: Synchronizations
+      x-speakeasy-entity: Synchronization
       type: object
       properties:
         sync:
