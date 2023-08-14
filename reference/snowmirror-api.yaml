@@ -62,7 +62,6 @@ paths:
         - pet
       summary: ''
       description: desc
-      x-speakeasy-entity-operation: Pet#get
       operationId: getPet
       responses:
         '200':
@@ -71,6 +70,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'
+    patch:
+      tags:
+        - pet      
+      summary: ''
+      operationId: patch-pet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+      description: Update
+      x-speakeasy-entity-operation: Pet#update
 security:
   - basic-authentication: []
 components:
