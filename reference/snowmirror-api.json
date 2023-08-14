@@ -199,8 +199,26 @@
                           "active": {
                             "type": "boolean"
                           },
-                          "schedulerPriority": {
-                            "type": "boolean"
+                          "scheduler": {
+                            "type": "object",
+                              "scheduletype": {
+                                "type": "string"
+                              },
+                              "beginDate": {
+                                "type": "string"
+                              }
+                          },
+                          "fullLoadscheduler": {
+                            "type": "object",
+                              "executionType": {
+                                "type": "string"
+                              },
+                              "scheduleType": {
+                                "type": "string"
+                              },                              
+                              "beginDate": {
+                                "type": "string"
+                              }
                           }
                         }
                       }
