@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'
-      x-speakeasy-entity-operation: Pet#get
+      x-speakeasy-entity-operation: Pet#read
 security:
   - basic-authentication: []
 components:
