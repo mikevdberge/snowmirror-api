@@ -44,9 +44,139 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "sync": {
+                        "name": "incident",
+                        "table": "incident",
+                        "mirrorTable": "incident",
+                        "columns": [
+                          {
+                            "name": "sys_id",
+                            "sysId": "3a3f8b99e1031100a24720593d95f5d5"
+                          },
+                          {
+                            "name": "active",
+                            "sysId": "8f2f4b99e1031100a24720593d95f563"
+                          }
+                        ],
+                        "columnsToExclude": [
+                          {
+                            "name": "sys_created_by",
+                            "sysId": "3a3f8b99e1031100a24720593d95f5d5"
+                          }
+                        ],
+                        "allowInheritedColumns": true,
+                        "referenceFieldType": "BOTH",
+                        "autoSchemaUpdate": false,
+                        "encodedQuery": "",
+                        "deleteStrategy": "AUDIT",
+                        "active": true,
+                        "runImmediately": true,
+                        "scheduler": {
+                          "type": "MANUALLY",
+                          "beginDate": "2014-08-07"
+                        },
+                        "fullLoadScheduler": {
+                          "executionType": "CLEAN_AND_SYNCHRONIZE",
+                          "type": "MANUALLY",
+                          "beginDate": "2014-08-07"
+                        },
+                        "schedulerPriority": "NORMAL"
+                      }
+                    }
+                  },
                   "properties": {
                     "sync": {
-                      "$ref": "#/components/schemas/synchronization"
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "table": {
+                          "type": "string"
+                        },
+                        "mirrorTable": {
+                          "type": "string"
+                        },
+                        "columns": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "sysId": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "columnsToExclude": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "sysId": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "allowInheritedColumns": {
+                          "type": "boolean"
+                        },
+                        "referenceFieldType": {
+                          "type": "string"
+                        },
+                        "autoSchemaUpdate": {
+                          "type": "boolean"
+                        },
+                        "encodedQuery": {
+                          "type": "string"
+                        },
+                        "deleteStrategy": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "runImmediately": {
+                          "type": "boolean"
+                        },
+                        "scheduler": {
+                          "type": "object",
+                          "properties": {
+                            "schedulerType": {
+                              "type": "string"
+                            },
+                            "beginDate": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "fullLoadScheduler": {
+                          "type": "object",
+                          "properties": {
+                            "executionType": {
+                              "type": "string"
+                            },
+                            "scedulerType": {
+                              "type": "string"
+                            },
+                            "beginDate": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "schedulerPriority": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
