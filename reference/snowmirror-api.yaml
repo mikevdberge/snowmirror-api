@@ -43,6 +43,14 @@ paths:
         - synchronization
       x-speakeasy-entity-operation: Synchronization#get
       responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  $ref: '#/components/schemas/synchronization'          
         '400':
           description: Could not parse a request or validations failed.
       operationId: get-synchronization
