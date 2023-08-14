@@ -80,9 +80,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
         '400':
           description: Invalid ID supplied
         '404':
@@ -120,9 +117,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'  
       x-speakeasy-entity-operation: Pet#update
     delete:
       tags:
