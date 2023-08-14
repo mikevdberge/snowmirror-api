@@ -66,10 +66,15 @@ components:
       scheme: basic
   schemas:
     Pet:
+      x-speakeasy-entity: Pet
+      required:
+        - name
       title: Pet
       x-stoplight:
         id: hra6rhcb5vsau
       type: object
       properties:
         id:
+          type: string
+        name:
           type: string
