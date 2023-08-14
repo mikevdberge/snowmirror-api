@@ -18,13 +18,25 @@
       "url": "http://localhost:9090/api/v1"
     }
   ],
+  "tags":[
+    {
+      "name": "synchronization",
+      "description": "Synchronization",
+      "externalDocs": {
+        "description": "",
+         "url": "https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync"
+      }
+    }
+  ],
   "paths": {
     "/synchronization": {
       "parameters": [],
       "get": {
         "summary": "Get a list of all synchronizations.",
         "x-speakeasy-entity-operation": "Synchronization#get",
-        "tags": [],
+        "tags":[
+          "synchronization"
+        ],
         "responses": {
           "200": {
             "description": "A list of synchronizations was successfully retrieved.",
@@ -155,6 +167,9 @@
         "description": "Returns a list of all synchronizations."
       },
       "post": {
+        "tags": [
+          "synchronization"
+        ],
         "summary": "Creates a new synchronization",
         "x-speakeasy-entity-operation": "Synchronization#create",
         "operationId": "post-synchronization",
@@ -177,6 +192,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "synchronization"
+        ],        
         "summary": "Deletes synchronizations",
         "x-speakeasy-entity-operation": "Synchronization#delete",
         "operationId": "delete-synchronization",
@@ -190,9 +208,11 @@
     },
     "/synchronization/export": {
       "get": {
+        "tags": [
+          "synchronization"
+        ],
         "summary": "Your GET endpoint",
         "x-speakeasy-entity-operation": "Synchronization-Export#get",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -206,7 +226,9 @@
       "get": {
         "summary": "Your GET endpoint",
         "x-speakeasy-entity-operation": "Synchronization-Action#get",
-        "tags": [],
+        "tags": [
+          "synchronization"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -253,6 +275,9 @@
       "parameters": [],
       "post": {
         "summary": "",
+        "tags": [
+          "synchronization"
+        ],
         "operationId": "post-synchronization-action",
         "responses": {
           "200": {
