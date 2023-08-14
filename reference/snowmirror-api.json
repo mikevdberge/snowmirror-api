@@ -295,7 +295,7 @@
     "/synchronization/action": {
       "get": {
         "summary": "Your GET endpoint",
-        "x-speakeasy-entity-operation": "Synchronizations-Export#get",
+        "x-speakeasy-entity-operation": "Synchronizations-Action#get",
         "tags": [],
         "responses": {
           "200": {
