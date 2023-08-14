@@ -155,7 +155,7 @@
       },
       "post": {
         "summary": "Creates a new synchronization",
-        "x-speakeasy-entity-operation": "Synchronizations#create",
+        "x-speakeasy-entity-operation": "Synchronization#create",
         "operationId": "post-synchronization",
         "responses": {
           "200": {
@@ -177,7 +177,7 @@
       },
       "delete": {
         "summary": "Deletes synchronizations",
-        "x-speakeasy-entity-operation": "Synchronizations#delete",
+        "x-speakeasy-entity-operation": "Synchronization#delete",
         "operationId": "delete-synchronization",
         "responses": {
           "200": {
@@ -190,7 +190,7 @@
     "/synchronization/export": {
       "get": {
         "summary": "Your GET endpoint",
-        "x-speakeasy-entity-operation": "Synchronizations-Export#get",
+        "x-speakeasy-entity-operation": "Synchronization-Export#get",
         "tags": [],
         "responses": {
           "200": {
@@ -204,17 +204,123 @@
     "/synchronization/action": {
       "get": {
         "summary": "Your GET endpoint",
-        "x-speakeasy-entity-operation": "Synchronizations-Action#get",
+        "x-speakeasy-entity-operation": "Synchronization-Action#get",
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "actions": [
+                        "SYNCHRONIZE",
+                        "CLEAN_AND_SYNCHRONIZE",
+                        "STOP"
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Get list of actions": {
+                    "value": {
+                      "actions": [
+                        "SYNCHRONIZE",
+                        "CLEAN_AND_SYNCHRONIZE",
+                        "STOP"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "get-synchronization-action",
         "description": "Returns a list of all actions which can be performed on synchronizations."
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-synchronization-action",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alreadyRunningSyncIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "disabledSyncIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "alreadyRunningSyncIds": [
+                        1
+                      ],
+                      "disabledSyncIds": [
+                        2
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string"
+                  },
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "action": "SYNCHRONIZE",
+                    "ids": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-speakeasy-entity-operation": "Synchronization-Action#create"
+      }
     }
   },
   "components": {
