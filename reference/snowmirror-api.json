@@ -194,7 +194,25 @@
                                 }
                               }
                             }
-                          }                          
+                          },
+                          "allowInheritedColumns": {
+                            "type": "boolean"
+                          },
+                          "referenceFieldType": {
+                            "type": "string"
+                          },
+                          "autoSchemaUpdate": {
+                            "type": "boolean"
+                          },
+                          "encodedQuery": {
+                            "type": "null"
+                          },
+                          "deleteStrategy": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          }                                                    
                         }
                       }
                     }
