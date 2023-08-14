@@ -62,7 +62,7 @@ paths:
         - pet
       summary: ''
       description: desc
-      x-speakeasy-entity-operation: Pet#create
+      x-speakeasy-entity-operation: Pet#get
       operationId: getPet
       responses:
         '200':
