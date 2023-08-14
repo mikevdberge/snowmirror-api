@@ -57,6 +57,19 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Pet'
+    get:
+      tags:
+        - pet
+      summary: ''
+      operationId: get-pet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+      description: desc
 security:
   - basic-authentication: []
 components:
