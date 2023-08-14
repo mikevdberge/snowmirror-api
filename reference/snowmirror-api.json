@@ -141,7 +141,7 @@
                     "sync": {
                       "type": "object",
                       "properties": {
-                        "": {
+                        "name": {
                           "type": "string"
                         },
                         "view": {
