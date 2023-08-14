@@ -40,7 +40,7 @@ paths:
       tags:
         - pet
       summary: Add a new pet to the store
-      x-speakeasy-entity-operation: Pet#create
+      #x-speakeasy-entity-operation: Pet#create
       description: Add a new pet to the store
       operationId: addPet
       responses:
