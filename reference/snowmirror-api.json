@@ -46,7 +46,7 @@
                   "type": "object",
                   "properties": {
                     "sync": {
-                      "$ref": "#/components/schemas/synchronizations"
+                      "$ref": "#/components/schemas/synchronization"
                     }
                   }
                 }
@@ -230,7 +230,7 @@
   },
   "components": {
     "schemas": {
-      "synchronizations": {
+      "synchronization": {
         "x-speakeasy-entity": "Synchronization",
         "type": "object",
         "properties": {
@@ -326,7 +326,7 @@
             }
           }
         },
-        "title": "synchronizations",
+        "title": "synchronization",
         "x-stoplight": {
           "id": "b5d7c06caa157"
         },
