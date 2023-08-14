@@ -256,12 +256,6 @@
                 "properties": {}
               },
               "examples": {}
-            },
-            "application/xml": {
-              "schema": {
-                "type": "object",
-                "properties": {}
-              }
             }
           }
         }
