@@ -1052,7 +1052,8 @@
             }
           }
         },
-        "x-speakeasy-entity-operation": "entity"
+        "x-speakeasy-entity-operation": "Synchronization",
+        "title": "Synchronization"
       }
     },
     "securitySchemes": {
