@@ -201,28 +201,28 @@
                           },
                           "scheduler": {
                             "type": "object",
-                              "scheduletype": {
-                                "type": "string"
-                              },
-                              "beginDate": {
-                                "type": "string"
-                              }
+                            "scheduletype": {
+                              "type": "string"
+                            },
+                            "beginDate": {
+                              "type": "string"
+                            }
                           },
                           "fullLoadscheduler": {
                             "type": "object",
-                              "executionType": {
-                                "type": "string"
-                              },
-                              "scheduleType": {
-                                "type": "string"
-                              },                              
-                              "beginDate": {
-                                "type": "string"
-                              }
+                            "executionType": {
+                              "type": "string"
+                            },
+                            "scheduleType": {
+                              "type": "string"
+                            },
+                            "beginDate": {
+                              "type": "string"
+                            }
                           },
                           "schedulerPriority": {
                             "type": "boolean"
-                          }                                                       
+                          }
                         }
                       }
                     }
@@ -291,6 +291,21 @@
         "operationId": "get-synchronizations-export",
         "description": "Exports all synchronizations and their settings.\n\nIt does not export activity logs. If you import them to some other environment, you should run the synchronizations from scratch. It does not export global setting (Settings → General Settings nor Settings → Advanced Properties)."
       }
+    },
+    "/synchronization/action": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "x-speakeasy-entity-operation": "Synchronizations-Export#get",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "operationId": "get-synchronization-action",
+        "description": "Returns a list of all actions which can be performed on synchronizations."
+      },
+      "parameters": []
     }
   },
   "components": {
