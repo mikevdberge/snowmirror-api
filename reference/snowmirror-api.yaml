@@ -57,17 +57,48 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Pet'
+  /pet/{petId}:
     get:
-      summary: ''
-      operationId: get-pet
+      x-speakeasy-entity-operation: Pet#read
+      tags:
+        - pet
+      summary: Find pet by ID
+      description: Returns a single pet
+      operationId: getPetById
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
-          description: OK
+          description: successful operation
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/Pet'          
+            application/xml:
+              schema:
                 $ref: '#/components/schemas/Pet'
-      x-speakeasy-entity-operation: Pet#read
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+    update:
+      tags:
+        - pet
+      summary: Update the pet
+      operationId: updatePet
+      x-speakeasy-entity-operation: Pet#update
+    delete:
+      tags:
+        - pet
+      summary: Delete the pet 
+      operationId: deletePet
+      x-speakeasy-entity-operation: Pet#delete
 security:
   - basic-authentication: []
 components:
