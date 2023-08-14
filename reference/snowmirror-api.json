@@ -199,16 +199,6 @@
                           "active": {
                             "type": "boolean"
                           },
-                          "scheduler": {
-                            "type": "object",
-                              "scheduletype": {
-                                "type": "string"
-                              },
-                              "beginDate": {
-                                "type": "string"
-                              }
-                          },
-
                           "schedulerPriority": {
                             "type": "boolean"
                           }
