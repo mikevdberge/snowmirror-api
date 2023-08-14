@@ -87,17 +87,63 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Pet not found
-    update:
+    post:
       tags:
         - pet
-      summary: Update the pet
-      operationId: updatePet
+      summary: Updates a pet in the store with form data
+      description: 'Update'
+      operationId: updatePetWithForm
+      parameters:
+        - name: petId
+          in: path
+          description: ID of pet that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: name
+          in: query
+          description: Name of pet that needs to be updated
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Status of pet that needs to be updated
+          schema:
+            type: string
+      responses:
+        '405':
+          description: Invalid input
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'  
       x-speakeasy-entity-operation: Pet#update
     delete:
       tags:
         - pet
-      summary: Delete the pet 
+      summary: Deletes a pet
+      description: delete a pet
       operationId: deletePet
+      parameters:
+        - name: api_key
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: petId
+          in: path
+          description: Pet id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
       x-speakeasy-entity-operation: Pet#delete
 security:
   - basic-authentication: []
