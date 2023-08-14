@@ -181,20 +181,6 @@
                               }
                             }
                           },
-                          "columnstoExclude": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "name": {
-                                  "type": "string"
-                                },
-                                "sysId": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
                           "allowInheritedColumns": {
                             "type": "boolean"
                           },
@@ -215,12 +201,27 @@
                           },
                           "scheduler": {
                             "type": "object",
-                                "scheduletype": {
-                                  "type": "string"
-                                },
-                                "beginDate": {
-                                  "type": "string"
-                                }
+                              "scheduletype": {
+                                "type": "string"
+                              },
+                              "beginDate": {
+                                "type": "string"
+                              }
+                          },
+                          "fullLoadscheduler": {
+                            "type": "object",
+                              "executionType": {
+                                "type": "string"
+                              },
+                              "scheduleType": {
+                                "type": "string"
+                              },                              
+                              "beginDate": {
+                                "type": "string"
+                              }
+                          },
+                          "schedulerPriority": {
+                            "type": "boolean"
                           }
                         }
                       }
@@ -255,50 +256,7 @@
                 "type": "object",
                 "properties": {}
               },
-              "examples": {
-                "Full request for table Synchronization": {
-                  "value": {
-                    "sync": {
-                      "name": "incident",
-                      "table": "incident",
-                      "mirrorTable": "incident",
-                      "columns": [
-                        {
-                          "name": "sys_id",
-                          "sysId": "3a3f8b99e1031100a24720593d95f5d5"
-                        },
-                        {
-                          "name": "active",
-                          "sysId": "8f2f4b99e1031100a24720593d95f563"
-                        }
-                      ],
-                      "columnsToExclude": [
-                        {
-                          "name": "sys_created_by",
-                          "sysId": "3a3f8b99e1031100a24720593d95f5d5"
-                        }
-                      ],
-                      "allowInheritedColumns": true,
-                      "referenceFieldType": "BOTH",
-                      "autoSchemaUpdate": false,
-                      "encodedQuery": "",
-                      "deleteStrategy": "AUDIT",
-                      "active": true,
-                      "runImmediately": true,
-                      "scheduler": {
-                        "type": "MANUALLY",
-                        "beginDate": "2014-08-07"
-                      },
-                      "fullLoadScheduler": {
-                        "executionType": "CLEAN_AND_SYNCHRONIZE",
-                        "type": "MANUALLY",
-                        "beginDate": "2014-08-07"
-                      },
-                      "schedulerPriority": "NORMAL"
-                    }
-                  }
-                }
-              }
+              "examples": {}
             },
             "application/xml": {
               "schema": {
