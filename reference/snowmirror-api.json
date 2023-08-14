@@ -139,7 +139,21 @@
                   },
                   "properties": {
                     "sync": {
-                      "$ref": "#/components/schemas/synchronizations"
+                      "type": "object",
+                      "properties": {
+                        "": {
+                          "type": "string"
+                        },
+                        "view": {
+                          "type": "string"
+                        },
+                        "table": {
+                          "type": "string"
+                        },
+                        "mirrorTable": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 },
