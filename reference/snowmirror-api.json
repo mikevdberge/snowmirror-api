@@ -208,18 +208,7 @@
                                 "type": "string"
                               }
                           },
-                          "fullLoadscheduler": {
-                            "type": "object",
-                              "executionType": {
-                                "type": "string"
-                              },
-                              "scheduleType": {
-                                "type": "string"
-                              },                              
-                              "beginDate": {
-                                "type": "string"
-                              }
-                          },
+
                           "schedulerPriority": {
                             "type": "boolean"
                           }
