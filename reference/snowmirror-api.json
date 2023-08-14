@@ -163,7 +163,10 @@
                           },
                           "backupAttachment": {
                             "type": "string"
-                          },                          
+                          },    
+                          "mirrorTable": {
+                            "type" : "string"
+                          },                      
                           "columns": {
                             "type": "array",
                             "items": {
