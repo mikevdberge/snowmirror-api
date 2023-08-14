@@ -61,7 +61,9 @@ paths:
       tags:
         - pet
       summary: ''
-      operationId: get-pet
+      description: desc
+      x-speakeasy-entity-operation: Pet#create
+      operationId: getPet
       responses:
         '200':
           description: OK
@@ -69,7 +71,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pet'
-      description: desc
 security:
   - basic-authentication: []
 components:
