@@ -180,7 +180,10 @@
                                 }
                               }
                             }
-                          }                     
+                          },
+                          "allowInheritedColumns": {
+                            "type": "boolean"
+                          }                                               
                         }
                       }
                     }
