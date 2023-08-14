@@ -74,12 +74,12 @@
                         "active": true,
                         "runImmediately": true,
                         "scheduler": {
-                          "type": "MANUALLY",
+                          "schedulerType": "MANUALLY",
                           "beginDate": "2014-08-07"
                         },
                         "fullLoadScheduler": {
                           "executionType": "CLEAN_AND_SYNCHRONIZE",
-                          "type": "MANUALLY",
+                          "schedulerType": "MANUALLY",
                           "beginDate": "2014-08-07"
                         },
                         "schedulerPriority": "NORMAL"
