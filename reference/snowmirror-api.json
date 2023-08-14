@@ -353,6 +353,7 @@
   "components": {
     "schemas": {
       "synchronizations": {
+      "x-speakeasy-entity": "Synchronization",  
         "type": "object",
         "properties": {
           "sync": {
