@@ -1,11 +1,13 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: SnowMirror API
-  description: Example Hashicups through Speakeasy
+  description: This document is a guide which will walk you through SnowMirror REST API. The purpose of the REST API is to allow developers to integrate SnowMirror with other applications.
   contact:
     name: ' GuideVision'
     url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   version: 0.0.1
+x-logo: 
+  url: https://www.facebook.com/photo/?fbid=479614434167897&set=a.479614390834568&__tn__=%3C
 servers:
   - url: 'http://localhost:9090'
     description: local
@@ -176,7 +178,7 @@ components:
                 Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
             encodedQuery:
               type: string
-              example: ""
+              example: ''
             deleteStrategy:
               type: string
               enum:
