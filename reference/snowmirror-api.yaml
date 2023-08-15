@@ -152,6 +152,7 @@ components:
                 properties:
                   name:
                     type: string
+                    example: sys_created_by
             allowInheritedColumns:
               type: boolean
               description: SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,
