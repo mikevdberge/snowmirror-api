@@ -126,15 +126,18 @@ components:
             name:
               type: string
               description: Display name of the synchronization.
+              example: incident
             table:
               type: string
               description: Name of the table in ServiceNow.
+              example: incident
             view:
               type: string
               description: Name of the view in ServiceNow.
             mirrorTable:
               type: string
               description: Name of the table in mirror database where the data will be migrated.
+              example: incident
             columns:
               type: array
               items:
@@ -196,18 +199,22 @@ components:
         id:
           type: integer
           description: fix easyspeak
+          example: 1
         sync:
           type: object
           properties:
+            id:
+              type: integer
+              description: Sync ID            
+              example: 1
             name:
               type: string
               description: Display name of the synchronization.
+              example: incident
             table:
               type: string
               description: Name of the table in ServiceNow.
-            id:
-              type: integer
-              description: Sync ID
+              example: incident
       required:
         - id
         - name
