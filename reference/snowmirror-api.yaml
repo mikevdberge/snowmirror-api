@@ -6,8 +6,8 @@ info:
     name: ' GuideVision'
     url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   version: 0.0.1
-x-logo: 
-  url: https://www.facebook.com/photo/?fbid=479614434167897&set=a.479614390834568&__tn__=%3C
+x-logo:
+  url: 'https://www.facebook.com/photo/?fbid=479614434167897&set=a.479614390834568&__tn__=%3C'
 servers:
   - url: 'http://localhost:9090'
     description: local
@@ -112,6 +112,55 @@ paths:
           description: OK
       tags:
         - Synchronization
+  /api/v1/synchronization/action:
+    get:
+      summary: Synchronization actions
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronization
+      description: Returns a list of all actions which can be performed on synchronizations.
+  /api/v1/synchronization/export:
+    get:
+      summary: Export all synchronizations
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationExport
+      description: Exports all synchronizations and their settings.
+    parameters: []
 components:
   schemas:
     CreateSynchronizationInput:
