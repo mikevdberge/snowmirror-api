@@ -106,7 +106,7 @@ paths:
       tags:
         - synchronization
       summary: Deletes synchronizations
-      x-speakeasy-entity-operation: Synchronization#delete
+      #x-speakeasy-entity-operation: Synchronization#delete
       operationId: delete-synchronization
       responses:
         '200':
