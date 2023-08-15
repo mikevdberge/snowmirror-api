@@ -200,6 +200,9 @@ components:
           type: integer
           description: fix easyspeak
           example: 1
+        name:
+          type: string
+          description: fix easyspeak
         sync:
           type: object
           properties:
