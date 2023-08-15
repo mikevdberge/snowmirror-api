@@ -196,10 +196,10 @@ components:
       x-speakeasy-entity: Synchronization
       type: object
       properties:
-        id:
-          type: integer
-          description: fix easyspeak
-          example: 1
+        #id:
+        #  type: integer
+        #  description: fix easyspeak
+        #  example: 1
         sync:
           type: object
           properties:
