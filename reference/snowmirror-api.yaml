@@ -203,10 +203,10 @@ components:
         sync:
           type: object
           properties:
-            id:
-              type: integer
-              description: Sync ID            
-              example: 1
+         #   id:
+         #     type: integer
+         #     description: Sync ID            
+         #     example: 1
             name:
               type: string
               description: Display name of the synchronization.
