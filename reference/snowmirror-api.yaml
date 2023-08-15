@@ -208,7 +208,6 @@ components:
       required:
         - id
         - name
-      type: object
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
