@@ -196,22 +196,72 @@ components:
         sync:
           type: object
           properties:
-            #id:
-              #x-speakeasy-match: id
-              #type: integer
-              #description: Sync ID
+            id:
+              type: integer
+              description: ID of the sync
             name:
               type: string
-              description: Product name of the coffee.
+              description: Display name of the synchronization.
             table:
               type: string
-              description: Name of the table to sync
+              description: Name of the table in ServiceNow.
+            view:
+              type: string
+              description: Name of the view in ServiceNow.
             mirrorTable:
               type: string
-              description: Name of the mirrorTable
-
-      #required:
-      #  - name
+              description: Name of the table in mirror database where the data will be migrated.
+            columns:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+            columnsToExclude:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+            allowInheritedColumns:
+              type: boolean
+              description: SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,
+            referenceFieldType:
+              type: string
+              description: Defines how to synchronize reference field types.
+            autoSchemaUpdate:
+              type: boolean
+            encodedQuery:
+              type: string
+            deleteStrategy:
+              type: string
+            active:
+              type: boolean
+            runImmediately:
+              type: boolean
+            scheduler:
+              type: object
+              properties:
+                type:
+                  type: string
+                beginDate:
+                  type: string
+            fullLoadScheduler:
+              type: object
+              properties:
+                executionType:
+                  type: string
+                type:
+                  type: string
+                beginDate:
+                  type: string
+            schedulerPriority:
+              type: string                            
+          required:
+            - name
+            - mirrorTable
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
