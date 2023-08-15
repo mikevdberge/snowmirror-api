@@ -1,17 +1,17 @@
 openapi: 3.0.3
 info:
+  title: SnowMirror API
   description: Example Hashicups through Speakeasy
   contact:
     name: ' GuideVision'
     url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
-  title: Hashicups
   version: 0.0.1
 servers:
-  - url: https://example.com
+  - url: http://localhost:9090
 security:
   - APIKey: []
 externalDocs:
-  url: https://docs.speakeasyapi.dev
+  url: https://www.snow-mirror.com/doc/RestApiGuide.html
   description: The Speakeasy Platform Documentation
 tags:
   - name: Synchronization
@@ -21,7 +21,7 @@ tags:
       url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'  
 
 paths:
-  /api/v1/synchronization/:
+  /api/v1/synchronization:
     post:
       summary: Create a synchronization
       description: Returns a list of all synchronizations.
