@@ -203,6 +203,7 @@ components:
               type: string
               description: Name of the table in ServiceNow.
             id:
+              x-speakeasy-match: id
               type: integer
               description: Sync ID
       required:
