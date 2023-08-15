@@ -144,6 +144,7 @@ components:
                 properties:
                   name:
                     type: string
+                    example: sys_id
             columnsToExclude:
               type: array
               items:
@@ -154,11 +155,18 @@ components:
             allowInheritedColumns:
               type: boolean
               description: SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,
+              example: true
             referenceFieldType:
               type: string
+              enum:
+                - SYS_IDS
+                - DISPLAY_VALUES
+                - BOTH
+              example: BOTH
               description: Defines how to synchronize reference field types.
             autoSchemaUpdate:
               type: boolean
+              example: false
             encodedQuery:
               type: string
             deleteStrategy:
@@ -168,6 +176,7 @@ components:
                 - TRUNCATE
                 - DIFF
                 - NONE
+              example: AUDIT
             active:
               type: boolean
             runImmediately:
@@ -186,19 +195,25 @@ components:
                     - WEEKLY
                     - PERIODICALLY
                     - CRON
+                  example: MANUALLY
                 beginDate:
                   type: string
+                  example: 2014-08-07
             fullLoadScheduler:
               type: object
               properties:
                 executionType:
                   type: string
+                  example: CLEAN_AND_SYNCHRONIZE
                 type:
                   type: string
+                  example: MANUALLY
                 beginDate:
                   type: string
+                  example: 2014-08-07
             schedulerPriority:
-              type: string                            
+              type: string
+              example: NORMAL                 
           required:
             - name
             - mirrorTable
