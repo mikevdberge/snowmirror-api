@@ -227,7 +227,6 @@ components:
         id:
           type: integer
           description: fix easyspeak
-          example: 1
         sync:
           type: object
           properties:
