@@ -21,6 +21,29 @@ tags:
       url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'  
 
 paths:
+  /api/v1/synchronization/:
+    post:
+      summary: Create a synchronization
+      description: Returns a list of all synchronizations.
+      x-speakeasy-entity-operation: Synchronization#create
+      operationId: createOrder 
+      requestBody:
+        description: A JSON representation of the Api to upsert
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrderInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: OK
+      tags:
+        - Synchronization  
+
   /api/v1/synchronization/{id}:
     get:
       summary: Get an synchronizations
@@ -45,9 +68,9 @@ paths:
       tags:
         - Synchronization
     put:
-      summary: Create a synchronization
+      summary: Update a synchronization
       description: Returns a list of all synchronizations.
-      x-speakeasy-entity-operation: Synchronization#create,update
+      x-speakeasy-entity-operation: Synchronization#update
       operationId: upsertOrder
       parameters:
         - description: The id of the sync.
