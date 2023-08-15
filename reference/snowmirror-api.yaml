@@ -74,7 +74,6 @@ paths:
         - description: The id of the sync.
           in: path
           name: id
-          #x-speakeasy-match: id
           required: true
           schema:
             type: integer
@@ -103,7 +102,6 @@ paths:
         - description: The ID of the order to delete.
           in: path
           name: id
-          #x-speakeasy-match: id
           required: true
           schema:
             type: integer
@@ -118,6 +116,8 @@ components:
       description: An input object to creating a Synchronization
       x-speakeasy-entity: Synchronization
       type: object
+      x-stoplight:
+        id: d04afae9c8b4d
       properties:
         sync:
           type: object
@@ -155,7 +155,7 @@ components:
                     example: sys_created_by
             allowInheritedColumns:
               type: boolean
-              description: SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,
+              description: 'SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,'
               example: true
             referenceFieldType:
               type: string
@@ -168,6 +168,12 @@ components:
             autoSchemaUpdate:
               type: boolean
               example: false
+              description: |
+                Configures how to check for schema changes in ServiceNow.
+
+                Enabled (true) - whenever a synchronization is executed, SnowMirror checks for schema changes in ServiceNow. Automatically adds, updates (data type, max. length of a column) and removes columns. If a new column is added SnowMirror clears the mirror table and downloads all records from scratch.
+
+                Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
             encodedQuery:
               type: string
             deleteStrategy:
@@ -180,6 +186,10 @@ components:
               example: AUDIT
             active:
               type: boolean
+              description: |-
+                true - synchronization is active and can be scheduled to synchronize data from ServiceNow
+                false - synchronization is deactivated and cannot be scheduled to synchronize data from ServiceNowNow
+              example: true
             runImmediately:
               type: boolean
               description: Determines whether initial synchronization should be done
@@ -199,7 +209,7 @@ components:
                   example: MANUALLY
                 beginDate:
                   type: string
-                  example: 2014-08-07
+                  example: '2014-08-07'
             fullLoadScheduler:
               type: object
               properties:
@@ -211,7 +221,7 @@ components:
                   example: MANUALLY
                 beginDate:
                   type: string
-                  example: 2014-08-07
+                  example: '2014-08-07'
             schedulerPriority:
               type: string
               enum:
@@ -220,14 +230,12 @@ components:
                 - NORMAL
                 - LOW
                 - LOWEST
-              example: NORMAL                 
+              example: NORMAL
           required:
             - name
             - mirrorTable
-      x-stoplight:
-        id: d04afae9c8b4d
     Synchronization:
-      description: An order helps you make coffee
+      description: Synchronization object
       x-speakeasy-entity: Synchronization
       type: object
       properties:
@@ -239,7 +247,7 @@ components:
           properties:
             id:
               type: integer
-              description: Sync ID            
+              description: Sync ID
               example: 1
             name:
               type: string
