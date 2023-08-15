@@ -14,7 +14,11 @@ externalDocs:
   url: https://docs.speakeasyapi.dev
   description: The Speakeasy Platform Documentation
 tags:
-  - name: Order
+  - name: Synchronization
+    description: Synchronization
+    externalDocs:
+      description: ''
+      url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'  
 
 paths:
   /api/v1/synchronization/{id}:
@@ -39,7 +43,7 @@ paths:
                 $ref: "#/components/schemas/Order"
           description: OK
       tags:
-        - Order
+        - Synchronization
     put:
       summary: Create a synchronization
       description: Returns a list of all synchronizations.
@@ -68,7 +72,7 @@ paths:
                 $ref: "#/components/schemas/Order"
           description: OK
       tags:
-        - Order       
+        - Synchronization      
     delete:
       summary: Delete a sync
       description: Delete a synchronizations.
@@ -86,7 +90,7 @@ paths:
         "200":
           description: OK
       tags:
-        - Order
+        - Synchronization
 components:
   schemas:
     CreateOrderInput:
