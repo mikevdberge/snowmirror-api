@@ -211,7 +211,7 @@ components:
               description: Name of the mirrorTable
 
       required:
-        - id
+        - name
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
