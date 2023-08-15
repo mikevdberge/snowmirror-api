@@ -176,6 +176,7 @@ components:
                 Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
             encodedQuery:
               type: string
+              example: ""
             deleteStrategy:
               type: string
               enum:
