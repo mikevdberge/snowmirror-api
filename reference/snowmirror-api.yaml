@@ -1,6 +1,9 @@
 openapi: 3.0.3
 info:
   description: Example Hashicups through Speakeasy
+  contact:
+    name: ' GuideVision'
+    url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   title: Hashicups
   version: 0.0.1
 servers:
@@ -14,11 +17,42 @@ tags:
   - name: Order
 
 paths:
-  /v1/order:
+  /api/v1/synchronization/{id}:
+    get:
+      summary: Get an synchronizations
+      description: Returns a list of all synchronizations.
+      x-speakeasy-entity-operation: Order#get
+      operationId: getOrder
+      parameters:
+        - description: The ID of the order get.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: OK
+      tags:
+        - Order
     put:
-      summary: Create an order
+      summary: Create a synchronization
+      description: Returns a list of all synchronizations.
       x-speakeasy-entity-operation: Order#create,update
       operationId: upsertOrder
+      parameters:
+        - description: The id of the sync.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer      
       requestBody:
         description: A JSON representation of the Api to upsert
         content:
@@ -34,37 +68,16 @@ paths:
                 $ref: "#/components/schemas/Order"
           description: OK
       tags:
-        - Order
-  /v1/order/{orderID}:
-    get:
-      summary: Get an order
-      x-speakeasy-entity-operation: Order#get
-      operationId: getOrder
-      parameters:
-        - description: The ID of the order get.
-          in: path
-          name: orderID
-          x-speakeasy-match: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
-          description: OK
-      tags:
-        - Order
+        - Order       
     delete:
-      summary: Delete an order
+      summary: Delete a sync
+      description: Delete a synchronizations.
       x-speakeasy-entity-operation: Order#delete
       operationId: deleteOrder
       parameters:
         - description: The ID of the order to delete.
           in: path
-          name: orderID
+          name: id
           x-speakeasy-match: id
           required: true
           schema:
@@ -110,7 +123,7 @@ components:
           description: Product name of the coffee.
         id:
           type: integer
-          description: Order ID
+          description: Sync ID
         teaser:
           type: string
           description: Fun tagline for the coffee.
