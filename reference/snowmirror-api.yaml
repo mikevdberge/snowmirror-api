@@ -25,7 +25,7 @@ paths:
     get:
       summary: Get an synchronizations
       description: Returns a list of all synchronizations.
-      x-speakeasy-entity-operation: Order#get
+      x-speakeasy-entity-operation: Synchronization#get
       operationId: getOrder
       parameters:
         - description: The ID of the order get.
@@ -47,7 +47,7 @@ paths:
     put:
       summary: Create a synchronization
       description: Returns a list of all synchronizations.
-      x-speakeasy-entity-operation: Order#create,update
+      x-speakeasy-entity-operation: Synchronization#create,update
       operationId: upsertOrder
       parameters:
         - description: The id of the sync.
@@ -76,7 +76,7 @@ paths:
     delete:
       summary: Delete a sync
       description: Delete a synchronizations.
-      x-speakeasy-entity-operation: Order#delete
+      x-speakeasy-entity-operation: Synchronization#delete
       operationId: deleteOrder
       parameters:
         - description: The ID of the order to delete.
@@ -95,7 +95,7 @@ components:
   schemas:
     CreateOrderInput:
       description: An input object to creating an order
-      x-speakeasy-entity: Order
+      x-speakeasy-entity: Synchronization
       properties:
         name:
           type: string
