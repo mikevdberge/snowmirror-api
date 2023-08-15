@@ -53,7 +53,7 @@ paths:
         - description: The ID of the synchronization get.
           in: path
           name: id
-          x-speakeasy-match: id
+          #x-speakeasy-match: id
           required: true
           schema:
             type: integer
@@ -75,7 +75,7 @@ paths:
         - description: The id of the sync.
           in: path
           name: id
-          x-speakeasy-match: id
+          #x-speakeasy-match: id
           required: true
           schema:
             type: integer
@@ -104,7 +104,7 @@ paths:
         - description: The ID of the order to delete.
           in: path
           name: id
-          x-speakeasy-match: id
+          #x-speakeasy-match: id
           required: true
           schema:
             type: integer
@@ -196,10 +196,10 @@ components:
         sync:
           type: object
           properties:
-            #id:
-            #  x-speakeasy-match: id
-            #  type: integer
-            #  description: Sync ID
+            id:
+              x-speakeasy-match: id
+              type: integer
+              description: Sync ID
             name:
               type: string
               description: Product name of the coffee.
