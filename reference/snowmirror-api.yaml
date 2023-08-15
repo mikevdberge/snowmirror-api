@@ -196,10 +196,10 @@ components:
         sync:
           type: object
           properties:
-            id:
+            #id:
               #x-speakeasy-match: id
-              type: integer
-              description: Sync ID
+              #type: integer
+              #description: Sync ID
             name:
               type: string
               description: Product name of the coffee.
