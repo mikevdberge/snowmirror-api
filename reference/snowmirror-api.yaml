@@ -1,304 +1,138 @@
-openapi: 3.1.0
-x-stoplight:
-  id: 63wbg3fuoium9
+openapi: 3.0.3
 info:
-  title: snowmirror-api
-  version: '1.0'
-  description: |-
-    This document is a guide which will walk you through SnowMirror REST API. The purpose of the REST API is to allow developers to integrate SnowMirror with other applications.
-
-    1.1. URIs of REST API Resources
-    The API consists of resources identified by URIs. To call the API you have to make HTTP requests on the provided URIs. The URIs have following structure:
-
-    http://{hostname}:{port}/api/{api-version}/{resource-name}
-
-    hostname - name of the server where SnowMirror is running
-
-    port - port on which SnowMirror is running
-
-    api-version - version of API to use. Currently "v1" is the only option available. In future releases a version may increase
-
-    resource-name - name of the resource you need to operate on. The resources are described in the following chapter
-
-    Let’s say you need to get information about a synchronization. Then you will have to make GET HTTP request on a resource called http://yourSnowMirrorServer:9090/api/v1/synchronization
-    Also note that resources are secured. Please see Authentication and Security chapter for details.
-  contact:
-    name: ' GuideVision'
-    url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
-  summary: The purpose of the REST API is to allow developers to integrate SnowMirror with other applications.
+  description: Example Hashicups through Speakeasy
+  title: Hashicups
+  version: 0.0.1
 servers:
-  - url: 'http://localhost:9090/api/v1'
+  - url: https://example.com
+security:
+  - APIKey: []
+externalDocs:
+  url: https://docs.speakeasyapi.dev
+  description: The Speakeasy Platform Documentation
 tags:
-  - name: synchronization
-    description: Synchronization
-    externalDocs:
-      description: ''
-      url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'
+  - name: Order
+
 paths:
-  /synchronization:
-    parameters: []
-    get:
-      summary: Get a list of all synchronizations.
-      tags:
-        - synchronization
-#      x-speakeasy-entity-operation: Synchronization#get
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  $ref: '#/components/schemas/synchronization'          
-        '400':
-          description: Could not parse a request or validations failed.
-      operationId: get-synchronization
-      description: Returns a list of all synchronizations.
-    post:
-      tags:
-        - synchronization
-      summary: Creates a new synchronization
-      x-speakeasy-entity-operation: Synchronization#create
-      operationId: post-synchronization
-      responses:
-        '200':
-          description: OK
-      description: Creates a new synchronization. Returns newly created synchronization including its ID.
+  /v1/order:
+    put:
+      summary: Create an order
+      x-speakeasy-entity-operation: Order#create,update
+      operationId: upsertOrder
       requestBody:
+        description: A JSON representation of the Api to upsert
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                $ref: '#/components/schemas/synchronization'
-              x-examples:
-                Example 1:
-                  sync:
-                    name: incident
-                    table: incident
-                    mirrorTable: incident
-                    columns:
-                      - name: sys_id
-                        sysId: 3a3f8b99e1031100a24720593d95f5d5
-                      - name: active
-                        sysId: 8f2f4b99e1031100a24720593d95f563
-                    columnsToExclude:
-                      - name: sys_created_by
-                        sysId: 3a3f8b99e1031100a24720593d95f5d5
-                    allowInheritedColumns: true
-                    referenceFieldType: BOTH
-                    autoSchemaUpdate: false
-                    encodedQuery: ''
-                    deleteStrategy: AUDIT
-                    active: true
-                    runImmediately: true
-                    scheduler:
-                      schedulerType: MANUALLY
-                      beginDate: '2014-08-07'
-                    fullLoadScheduler:
-                      executionType: CLEAN_AND_SYNCHRONIZE
-                      schedulerType: MANUALLY
-                      beginDate: '2014-08-07'
-                    schedulerPriority: NORMAL
-            examples: {}
+              $ref: "#/components/schemas/CreateOrderInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: OK
+      tags:
+        - Order
+  /v1/order/{orderID}:
+    get:
+      summary: Get an order
+      x-speakeasy-entity-operation: Order#get
+      operationId: getOrder
+      parameters:
+        - description: The ID of the order get.
+          in: path
+          name: orderID
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+          description: OK
+      tags:
+        - Order
     delete:
-      tags:
-        - synchronization
-      summary: Deletes synchronizations
-      #x-speakeasy-entity-operation: Synchronization#delete
-      operationId: delete-synchronization
+      summary: Delete an order
+      x-speakeasy-entity-operation: Order#delete
+      operationId: deleteOrder
+      parameters:
+        - description: The ID of the order to delete.
+          in: path
+          name: orderID
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
       responses:
-        '200':
-          description: Synchronizations has been successfully deleted
-        '400':
-          description: Could not parse a request
-        '404':
-          description: No synchronization was deleted because at least one of the synchronizations could not be found
-      description: Deletes synchronizations. To be able to delete a synchronization it must not be running.
-  /synchronization/action:
-    get:
-      summary: Your GET endpoint
-      x-speakeasy-entity-operation: SynchronizationAction#get
-      tags:
-        - synchronization
-      responses:
-        '200':
+        "200":
           description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  actions:
-                    type: array
-                    items:
-                      type: string
-                x-examples:
-                  Example 1:
-                    actions:
-                      - SYNCHRONIZE
-                      - CLEAN_AND_SYNCHRONIZE
-                      - STOP
-              examples:
-                Get list of actions:
-                  value:
-                    actions:
-                      - SYNCHRONIZE
-                      - CLEAN_AND_SYNCHRONIZE
-                      - STOP
-      operationId: get-synchronization-action
-      description: Returns a list of all actions which can be performed on synchronizations.
-    parameters: []
-    post:
-      summary: ''
       tags:
-        - synchronization
-      x-speakeasy-entity-operation: SynchronizationAction#create
-      operationId: post-synchronization-action
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  alreadyRunningSyncIds:
-                    type: array
-                    items:
-                      type: integer
-                  disabledSyncIds:
-                    type: array
-                    items:
-                      type: integer
-                x-examples:
-                  Example 1:
-                    alreadyRunningSyncIds:
-                      - 1
-                    disabledSyncIds:
-                      - 2
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                action:
-                  type: string
-                ids:
-                  type: array
-                  items:
-                    type: integer
-              x-examples:
-                Example 1:
-                  action: SYNCHRONIZE
-                  ids:
-                    - 1
-                    - 2
-                    - 3
-      description: |-
-        Performs an action on the selected synchronizations.
-        API ignores synchronizations which are already running. It also ignores synchronizations which are deactivated.
-        Available actions are "SYNCHRONIZE", "CLEAN_AND_SYNCHRONIZE", "DIFFERENTIAL_SYNCHRONIZATION", "STOP"
+        - Order
 components:
   schemas:
-    synchronization:
-      x-speakeasy-entity: Synchronization
-      type: object
+    CreateOrderInput:
+      description: An input object to creating an order
+      x-speakeasy-entity: Order
       properties:
-        sync:
-          type: object
-          properties:
-            name:
-              type: string
-            table:
-              type: string
-            mirrorTable:
-              type: string
-            columns:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  sysId:
-                    type: string
-            columnsToExclude:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  sysId:
-                    type: string
-            allowInheritedColumns:
-              type: boolean
-            referenceFieldType:
-              type: string
-            autoSchemaUpdate:
-              type: boolean
-            encodedQuery:
-              type: string
-            deleteStrategy:
-              type: string
-            active:
-              type: boolean
-            runImmediately:
-              type: boolean
-            scheduler:
-              type: object
-              properties:
-                schedulerType:
-                  type: string
-                beginDate:
-                  type: string
-            fullLoadScheduler:
-              type: object
-              properties:
-                executionType:
-                  type: string
-                schedulerType:
-                  type: string
-                beginDate:
-                  type: string
-            schedulerPriority:
-              type: string
-      x-examples:
-        Example 1:
-          sync:
-            name: incident
-            table: incident
-            mirrorTable: incident
-            columns:
-              - name: sys_id
-                sysId: 3a3f8b99e1031100a24720593d95f5d5
-              - name: active
-                sysId: 8f2f4b99e1031100a24720593d95f563
-            columnsToExclude:
-              - name: sys_created_by
-                sysId: 3a3f8b99e1031100a24720593d95f5d5
-            allowInheritedColumns: true
-            referenceFieldType: BOTH
-            autoSchemaUpdate: false
-            encodedQuery: ''
-            deleteStrategy: AUDIT
-            active: true
-            runImmediately: true
-            scheduler:
-              schedulerType: MANUALLY
-              beginDate: '2014-08-07'
-            fullLoadScheduler:
-              executionType: CLEAN_AND_SYNCHRONIZE
-              schedulerType: MANUALLY
-              beginDate: '2014-08-07'
-            schedulerPriority: NORMAL
-      description: ''
+        name:
+          type: string
+          description: Product name of the coffee.
+        teaser:
+          type: string
+          description: Fun tagline for the coffee.
+        description:
+          type: string
+          description: Product description of the coffee.
+        price:
+          type: number
+          description: Suggested cost of the coffee.
+        image:
+          type: string
+          description: URI for an image of the coffee.
+      required:
+        - name
+        - teaser
+        - price
+        - image
+      type: object
+    Order:
+      description: An order helps you make coffee
+      x-speakeasy-entity: Order
+      properties:
+        name:
+          type: string
+          description: Product name of the coffee.
+        id:
+          type: integer
+          description: Order ID
+        teaser:
+          type: string
+          description: Fun tagline for the coffee.
+        description:
+          type: string
+          description: Product description of the coffee.
+        price:
+          type: number
+          description: Suggested cost of the coffee.
+        image:
+          type: string
+          description: URI for an image of the coffee.
+      required:
+        - id
+        - name
+        - teaser
+        - price
+        - image
+      type: object
   securitySchemes:
-    basic-authentication:
-      type: http
-      scheme: basic
-security:
-  - basic-authentication: []
+    APIKey:
+      description: The API Key for the workspace
+      in: header
+      name: x-api-key
+      type: apiKey
