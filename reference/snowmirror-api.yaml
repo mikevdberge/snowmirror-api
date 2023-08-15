@@ -53,7 +53,7 @@ paths:
         - description: The ID of the order get.
           in: path
           name: id
-          x-speakeasy-match: id
+          x-speakeasy-match: sync.id
           required: true
           schema:
             type: integer
