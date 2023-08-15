@@ -50,7 +50,7 @@ paths:
       x-speakeasy-entity-operation: Synchronization#get
       operationId: getSynchronization
       parameters:
-        - description: The ID of the order get.
+        - description: The ID of the synchronization get.
           in: path
           name: id
           x-speakeasy-match: id
@@ -190,33 +190,27 @@ components:
         id: d04afae9c8b4d
     Synchronization:
       description: An order helps you make coffee
-      x-speakeasy-entity: Order
+      x-speakeasy-entity: Synchronization
+      type: object
       properties:
-        name:
-          type: string
-          description: Product name of the coffee.
-        id:
-          type: integer
-          description: Sync ID
-        teaser:
-          type: string
-          description: Fun tagline for the coffee.
-        description:
-          type: string
-          description: Product description of the coffee.
-        price:
-          type: number
-          description: Suggested cost of the coffee.
-        image:
-          type: string
-          description: URI for an image of the coffee.
+        sync:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Sync ID
+            name:
+              type: string
+              description: Product name of the coffee.
+            table:
+              type: string
+              description: Name of the table to sync
+            mirrorTable:
+              type: string
+              description: Name of the mirrorTable
+
       required:
         - id
-        - name
-        - teaser
-        - price
-        - image
-      type: object
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
