@@ -154,7 +154,7 @@ components:
             scheduler:
               type: object
               properties:
-                schedulerType:
+                type:
                   type: string
                 beginDate:
                   type: string
