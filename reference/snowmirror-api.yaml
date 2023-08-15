@@ -142,8 +142,6 @@ components:
                 properties:
                   name:
                     type: string
-                  sysId:
-                    type: string
             columnsToExclude:
               type: array
               items:
@@ -151,8 +149,6 @@ components:
                 properties:
                   name:
                     type: string
-                  sysId:
-                    type: string              
             allowInheritedColumns:
               type: boolean
               description: SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,
