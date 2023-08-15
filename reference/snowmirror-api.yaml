@@ -138,7 +138,7 @@ paths:
       description: Returns a list of all actions which can be performed on synchronizations.
   /api/v1/synchronization/export:
     get:
-      summary: Export all synchronizations
+      summary: Exports all synchronizations and their settings.
       tags: []
       responses:
         '200':
@@ -161,6 +161,41 @@ paths:
       operationId: getSynchronizationExport
       description: Exports all synchronizations and their settings.
     parameters: []
+  /api/v1/synchronization/import:
+    get:
+      summary: Import synchronizations
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationExport
+      description: Exports all synchronizations and their settings.
+    parameters: []
+    post:
+      summary: Import synchronizations and their settings
+      operationId: postSynchronizationImport
+      responses:
+        '200':
+          description: OK
+      description: |-
+        Imports synchronizations and their settings.
+
+        This endpoint has to be called with a required "existing" parameter so that SnowMirror know how to deal with existing synchronizations.
 components:
   schemas:
     CreateSynchronizationInput:
