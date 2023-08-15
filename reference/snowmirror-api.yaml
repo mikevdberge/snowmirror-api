@@ -32,7 +32,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateOrderInput'
+              $ref: '#/components/schemas/CreateSynchronizationInput'
         required: true
       responses:
         '200':
@@ -84,7 +84,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateOrderInput'
+              $ref: '#/components/schemas/CreateSynchronizationInput'
         required: true
       responses:
         '200':
@@ -115,8 +115,8 @@ paths:
         - Synchronization
 components:
   schemas:
-    CreateOrderInput:
-      description: An input object to creating an order
+    CreateSynchronizationInput:
+      description: An input object to creating a Synchronization
       x-speakeasy-entity: Synchronization
       properties:
         name:
@@ -140,6 +140,8 @@ components:
         - price
         - image
       type: object
+      x-stoplight:
+        id: d04afae9c8b4d
     Synchronization:
       description: An order helps you make coffee
       x-speakeasy-entity: Order
