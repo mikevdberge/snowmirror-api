@@ -198,24 +198,9 @@ components:
         id:
           type: integer
           description: Sync ID
-        teaser:
-          type: string
-          description: Fun tagline for the coffee.
-        description:
-          type: string
-          description: Product description of the coffee.
-        price:
-          type: number
-          description: Suggested cost of the coffee.
-        image:
-          type: string
-          description: URI for an image of the coffee.
       required:
         - id
         - name
-        - teaser
-        - price
-        - image
       type: object
       x-stoplight:
         id: b02cbc78ee913
