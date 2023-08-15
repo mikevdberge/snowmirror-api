@@ -190,7 +190,7 @@ components:
         id: d04afae9c8b4d
     Synchronization:
       description: An order helps you make coffee
-      x-speakeasy-entity: Synchronization
+      x-speakeasy-entity: Order
       type: object
       properties:
         sync:
