@@ -53,7 +53,6 @@ paths:
         - description: The ID of the order get.
           in: path
           name: id
-          x-speakeasy-match: sync#id
           required: true
           schema:
             type: integer
@@ -196,13 +195,10 @@ components:
       x-speakeasy-entity: Synchronization
       type: object
       properties:
-        ids:
+        id:
           type: integer
           description: fix easyspeak
           example: 1
-        name:
-          type: string
-          description: fix easyspeak
         sync:
           type: object
           properties:
