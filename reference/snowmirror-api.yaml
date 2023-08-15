@@ -7,19 +7,18 @@ info:
     url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   version: 0.0.1
 servers:
-  - url: http://localhost:9090
+  - url: 'http://localhost:9090'
 security:
   - APIKey: []
 externalDocs:
-  url: https://www.snow-mirror.com/doc/RestApiGuide.html
+  url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   description: The Speakeasy Platform Documentation
 tags:
   - name: Synchronization
     description: Synchronization
     externalDocs:
       description: ''
-      url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'  
-
+      url: 'https://www.snow-mirror.com/doc/RestApiGuide.html#section-api-sync'
 paths:
   /api/v1/synchronization:
     post:
@@ -32,19 +31,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateOrderInput"
+              $ref: '#/components/schemas/CreateOrderInput'
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Order"
+                $ref: '#/components/schemas/Synchronization'
           description: OK
       tags:
-        - Synchronization  
-
-  /api/v1/synchronization/{id}:
+        - Synchronization
+  '/api/v1/synchronization/{id}':
     get:
       summary: Get an synchronizations
       description: Returns a list of all synchronizations.
@@ -59,11 +57,11 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Order"
+                $ref: '#/components/schemas/Synchronization'
           description: OK
       tags:
         - Synchronization
@@ -79,23 +77,23 @@ paths:
           x-speakeasy-match: id
           required: true
           schema:
-            type: integer      
+            type: integer
       requestBody:
         description: A JSON representation of the Api to upsert
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateOrderInput"
+              $ref: '#/components/schemas/CreateOrderInput'
         required: true
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Order"
+                $ref: '#/components/schemas/Synchronization'
           description: OK
       tags:
-        - Synchronization      
+        - Synchronization
     delete:
       summary: Delete a sync
       description: Delete a synchronizations.
@@ -110,7 +108,7 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           description: OK
       tags:
         - Synchronization
@@ -141,7 +139,7 @@ components:
         - price
         - image
       type: object
-    Order:
+    Synchronization:
       description: An order helps you make coffee
       x-speakeasy-entity: Order
       properties:
@@ -170,6 +168,8 @@ components:
         - price
         - image
       type: object
+      x-stoplight:
+        id: b02cbc78ee913
   securitySchemes:
     APIKey:
       description: The API Key for the workspace
