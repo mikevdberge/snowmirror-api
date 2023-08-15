@@ -8,8 +8,9 @@ info:
   version: 0.0.1
 servers:
   - url: 'http://localhost:9090'
+    description: local
 security:
-  - APIKey: []
+  - basic-authentication: []
 externalDocs:
   url: 'https://www.snow-mirror.com/doc/RestApiGuide.html'
   description: The Speakeasy Platform Documentation
@@ -171,8 +172,6 @@ components:
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
-    APIKey:
-      description: The API Key for the workspace
-      in: header
-      name: x-api-key
-      type: apiKey
+    basic-authentication:
+      type: http
+      scheme: basic
