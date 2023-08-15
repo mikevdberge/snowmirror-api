@@ -191,13 +191,20 @@ components:
     Synchronization:
       description: An order helps you make coffee
       x-speakeasy-entity: Synchronization
+      type: object
       properties:
-        name:
-          type: string
-          description: Product name of the coffee.
-        id:
-          type: integer
-          description: Sync ID
+        sync:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Display name of the synchronization.
+            table:
+              type: string
+              description: Name of the table in ServiceNow.
+            id:
+              type: integer
+              description: Sync ID
       required:
         - id
         - name
