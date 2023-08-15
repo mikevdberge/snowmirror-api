@@ -269,7 +269,7 @@ components:
         - id
         - name
     Synchronization:
-      description: An order helps you make coffee
+      description: A Synchonization object
       type: object
       properties:
         sync:
