@@ -115,7 +115,8 @@ paths:
   /api/v1/synchronization/action:
     get:
       summary: Synchronization actions
-      tags: []
+      tags:
+        - Synchronization
       responses:
         '200':
           description: OK
@@ -134,12 +135,13 @@ paths:
                       - SYNCHRONIZE
                       - CLEAN_AND_SYNCHRONIZE
                       - STOP
-      operationId: getSynchronization
+      operationId: getSynchronizationAction
       description: Returns a list of all actions which can be performed on synchronizations.
   /api/v1/synchronization/export:
     get:
       summary: Exports all synchronizations and their settings.
-      tags: []
+      tags:
+        - Synchronization
       responses:
         '200':
           description: OK
@@ -164,7 +166,8 @@ paths:
   /api/v1/synchronization/import:
     get:
       summary: Import synchronizations
-      tags: []
+      tags:
+        - Synchronization
       responses:
         '200':
           description: OK
@@ -183,12 +186,15 @@ paths:
                       - SYNCHRONIZE
                       - CLEAN_AND_SYNCHRONIZE
                       - STOP
-      operationId: getSynchronizationExport
+      operationId: getSynchronizationImport
       description: Exports all synchronizations and their settings.
     parameters: []
     post:
       summary: Import synchronizations and their settings
       operationId: postSynchronizationImport
+      tags:
+        - Synchronization
+
       responses:
         '200':
           description: OK
