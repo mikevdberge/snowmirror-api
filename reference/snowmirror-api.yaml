@@ -163,7 +163,7 @@ components:
               properties:
                 executionType:
                   type: string
-                schedulerType:
+                type:
                   type: string
                 beginDate:
                   type: string
