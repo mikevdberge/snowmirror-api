@@ -463,9 +463,10 @@ components:
             - NORMAL
             - LOW
             - LOWEST
-          retentionPeriod:
-            type: integer
-            description: How many days to keep backups
+          example: NORMAL
+        retentionPeriod:
+          type: integer
+          description: How many days to keep backups
           format:
             type: string
             description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
