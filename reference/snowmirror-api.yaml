@@ -332,15 +332,15 @@ components:
             - NORMAL
             - LOW
             - LOWEST
-          retentionPeriod:
-            type: integer
-            description: How many days to keep backups
-          format:
-            type: string
-            description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
-            enum:
-              - CSV
-              - XML
+        retentionPeriod:
+          type: integer
+          description: How many days to keep backups
+        format:
+          type: string
+          description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
+          enum:
+            - CSV
+            - XML
       required:
         - name
         - mirrorTable
@@ -467,12 +467,13 @@ components:
         retentionPeriod:
           type: integer
           description: How many days to keep backups
-          format:
-            type: string
-            description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
-            enum:
-              - CSV
-              - XML
+        format:
+          type: string
+          description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
+          enum:
+            - CSV
+            - XML
+          example: XML
       required:
         - name
         - mirrorTable
