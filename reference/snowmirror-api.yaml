@@ -47,6 +47,82 @@ paths:
           description: OK
       tags:
         - Synchronization
+  '/api/v1/synchronization/{id}':
+    get:
+      summary: Get a synchronization
+      description: Returns detailed information about the synchronization.
+      x-speakeasy-entity-operation: Synchronization#get
+      operationId: getSynchronization
+      parameters:
+        - description: Id of the synchronization.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    put:
+      summary: Update a synchronization
+      description: |-
+        Updates a synchronization. The request body contains all fields (even those not being modified).
+
+        Here is how to modify a single field:
+
+        1) Retrieve the synchronization using GET endpoint.
+        2) Take the JSON response from GET endpoint and change the field. Do no touch the other fields.
+        3) Send the JSON from the previous step to the PUT endpoint.
+      x-speakeasy-entity-operation: Synchronization#update
+      operationId: updateSynchronization
+      parameters:
+        - description: Id of the synchronization to update.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: A JSON representation of the synchronization to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSynchronizationUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    delete:
+      summary: Delete a sync
+      description: Delete a synchronizations.
+      x-speakeasy-entity-operation: Synchronization#delete
+      operationId: deleteSynchronization
+      parameters:
+        - description: Id of the synchronization to delete.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Synchronization
   /api/v1/synchronization/action:
     get:
       summary: Synchronization actions
@@ -136,105 +212,15 @@ paths:
         Imports synchronizations and their settings.
 
         This endpoint has to be called with a required "existing" parameter so that SnowMirror know how to deal with existing synchronizations.
-  '/api/v1/synchronization/{id}':
-    get:
-      summary: Get a synchronization
-      description: Returns detailed information about the synchronization.
-      x-speakeasy-entity-operation: Synchronization#get
-      operationId: getSynchronization
-      parameters:
-        - description: Id of the synchronization.
-          in: path
-          name: id
-          x-speakeasy-match: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Synchronization'
-          description: OK
-      tags:
-        - Synchronization
-    put:
-      summary: Update a synchronization
-      description: |-
-        Updates a synchronization. The request body contains all fields (even those not being modified).
-
-        Here is how to modify a single field:
-
-        1) Retrieve the synchronization using GET endpoint.
-        2) Take the JSON response from GET endpoint and change the field. Do no touch the other fields.
-        3) Send the JSON from the previous step to the PUT endpoint.
-      x-speakeasy-entity-operation: Synchronization#update
-      operationId: updateSynchronization
-      parameters:
-        - description: Id of the synchronization to update.
-          in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        description: A JSON representation of the synchronization to update
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSynchronizationInput'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Synchronization'
-          description: OK
-      tags:
-        - Synchronization
-    delete:
-      summary: Delete a sync
-      description: Delete a synchronizations.
-      x-speakeasy-entity-operation: Synchronization#delete
-      operationId: deleteSynchronization
-      parameters:
-        - description: Id of the synchronization to delete.
-          in: path
-          name: id
-          x-speakeasy-match: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Synchronization
-  '/api/v1/synchronization/{id}/action':
-    parameters:
-      - description: Id of the synchronization for the list of actions to perform.
-        in: path
-        name: id
-        required: true
-        schema:
-          type: integer
-    get:
-      summary: Get actions for a syncronization
-      tags:
-        - Synchronization
-      responses:
-        '200':
-          description: OK
-      operationId: getSynchronization-id-action
-      description: Returns a list of all actions which can be performed on the synchronization.
 components:
   schemas:
     CreateSynchronizationSyncInput:
       x-speakeasy-entity: Synchronization
       type: object
       properties:
+        id:
+          type: integer
+          description: Id of the synchronization.
         name:
           type: string
           description: Display name of the synchronization.
@@ -275,11 +261,11 @@ components:
         autoSchemaUpdate:
           type: boolean
           description: |
-            Configures how to check for schema changes in ServiceNow.
+                Configures how to check for schema changes in ServiceNow.
 
-            Enabled (true) - whenever a synchronization is executed, SnowMirror checks for schema changes in ServiceNow. Automatically adds, updates (data type, max. length of a column) and removes columns. If a new column is added SnowMirror clears the mirror table and downloads all records from scratch.
-            Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
-          example: true
+                Enabled (true) - whenever a synchronization is executed, SnowMirror checks for schema changes in ServiceNow. Automatically adds, updates (data type, max. length of a column) and removes columns. If a new column is added SnowMirror clears the mirror table and downloads all records from scratch.
+                Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
+          example: true                
         encodedQuery:
           type: string
           example: ''
@@ -290,13 +276,13 @@ components:
             - TRUNCATE
             - DIFF
             - NONE
-          example: AUDIT
+          example: AUDIT          
         active:
           type: boolean
           description: |-
-            true - synchronization is active and can be scheduled to synchronize data from ServiceNow
-            false - synchronization is deactivated and cannot be scheduled to synchronize data from ServiceNowNow          
-          example: true
+                true - synchronization is active and can be scheduled to synchronize data from ServiceNow
+                false - synchronization is deactivated and cannot be scheduled to synchronize data from ServiceNowNow          
+          example: true                
         runImmediately:
           type: boolean
           description: Determines whether initial synchronization should be done
@@ -313,7 +299,7 @@ components:
                 - WEEKLY
                 - PERIODICALLY
                 - CRON
-              example: MANUALLY
+              example: MANUALLY              
             beginDate:
               type: string
               example: '2014-08-07'
@@ -346,7 +332,146 @@ components:
             - NORMAL
             - LOW
             - LOWEST
-          example: NORMAL
+          retentionPeriod:
+            type: integer
+            description: How many days to keep backups
+          format:
+            type: string
+            description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
+            enum:
+              - CSV
+              - XML
+      required:
+        - name
+        - mirrorTable
+    CreateSynchronizationSyncUpdate:
+      x-speakeasy-entity: Synchronization
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the synchronization.
+        name:
+          type: string
+          description: Display name of the synchronization.
+          example: incident
+        table:
+          type: string
+          description: Name of the table in ServiceNow.
+          example: incident
+        view:
+          type: string
+          description: Name of the view in ServiceNow.
+        mirrorTable:
+          type: string
+          description: Name of the table in mirror database where the data will be migrated.
+          example: incident
+        columns:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: sys_id
+        columnsToExclude:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: sys_created_by
+        allowInheritedColumns:
+          type: boolean
+          description: 'SnowMirror checks if columns exist in ServiceNow. If this flag is set to true,'
+        referenceFieldType:
+          type: string
+          description: Defines how to synchronize reference field types.
+        autoSchemaUpdate:
+          type: boolean
+          description: |
+                Configures how to check for schema changes in ServiceNow.
+
+                Enabled (true) - whenever a synchronization is executed, SnowMirror checks for schema changes in ServiceNow. Automatically adds, updates (data type, max. length of a column) and removes columns. If a new column is added SnowMirror clears the mirror table and downloads all records from scratch.
+                Enabled (no truncation) (ENABLED_WITHOUT_TRUNCATION) - the same as Enabled option. It handles new columns differently, though. If a new column is added SnowMirror does not clear the mirror table. Instead, it creates the column and populates it with a default value (which is defined in ServiceNow).
+          example: true                
+        encodedQuery:
+          type: string
+          example: ''
+        deleteStrategy:
+          type: string
+          enum:
+            - AUDIT
+            - TRUNCATE
+            - DIFF
+            - NONE
+          example: AUDIT          
+        active:
+          type: boolean
+          description: |-
+                true - synchronization is active and can be scheduled to synchronize data from ServiceNow
+                false - synchronization is deactivated and cannot be scheduled to synchronize data from ServiceNowNow          
+          example: true                
+        runImmediately:
+          type: boolean
+          description: Determines whether initial synchronization should be done
+          x-speakeasy-terraform-ignore: true          
+          example: false
+        scheduler:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Specifies when the incremental load synchronization will run
+              enum:
+                - MANUALLY
+                - DAILY
+                - WEEKLY
+                - PERIODICALLY
+                - CRON
+              example: MANUALLY              
+            beginDate:
+              type: string
+              example: '2014-08-07'
+        fullLoadScheduler:
+          type: object
+          properties:
+            executionType:
+              type: string
+              enum:
+                - CLEAN_AND_SYNCHRONIZE
+                - DIFFERENTIAL.
+              example: CLEAN_AND_SYNCHRONIZE
+            type:
+              type: string
+              enum:
+                - MANUALLY
+                - DAILY
+                - WEEKLY
+                - PERIODICALLY
+                - CRON
+              example: MANUALLY
+            beginDate:
+              type: string
+              example: '2014-08-07'
+        schedulerPriority:
+          type: string
+          enum:
+            - HIGHEST
+            - HIGH
+            - NORMAL
+            - LOW
+            - LOWEST
+          retentionPeriod:
+            type: integer
+            description: How many days to keep backups
+          format:
+            type: string
+            description: How to store backups. "CSV" - comma separated file. "XML" - XML files. 
+            enum:
+              - CSV
+              - XML
       required:
         - name
         - mirrorTable
@@ -358,19 +483,25 @@ components:
           $ref: '#/components/schemas/CreateSynchronizationSyncInput'
       x-stoplight:
         id: d04afae9c8b4d
+    CreateSynchronizationUpdate:
+      description: An input object to updating a Synchronization
+      type: object
+      properties:
+        sync:
+          $ref: '#/components/schemas/CreateSynchronizationSyncUpdate'
     SyncronizationSyncOutput:
       type: object
       x-speakeasy-entity: Synchronization
       properties:
+        id:
+          type: integer
+          description: Sync ID
         name:
           type: string
           description: Display name of the synchronization.
         table:
           type: string
           description: Name of the table in ServiceNow.
-        id:
-          type: integer
-          description: Sync ID
       required:
         - id
         - name
@@ -380,8 +511,6 @@ components:
       properties:
         sync:
           $ref: '#/components/schemas/SyncronizationSyncOutput'
-      required:
-        - sync
       x-stoplight:
         id: b02cbc78ee913
   securitySchemes:
