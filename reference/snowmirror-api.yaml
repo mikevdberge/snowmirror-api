@@ -399,7 +399,7 @@ components:
             snowMirror.activityLog.traceLog: 'false'
       properties:
         options:
-          type: string
+          type: object
   securitySchemes:
     basic-authentication:
       type: http
