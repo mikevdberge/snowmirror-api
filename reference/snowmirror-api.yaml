@@ -392,7 +392,11 @@ components:
       description: Object used for creating and updating SnowMirror Settings
       x-speakeasy-entity: Setting
       type: object
-      additionalProperties:
+      properties:
+        options:
+          type: object
+          additionalProperties:
+            type: string
         type: string
     Setting:
       type: array
