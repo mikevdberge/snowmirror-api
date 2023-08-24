@@ -392,14 +392,23 @@ components:
       description: Object used for creating and updating SnowMirror Settings
       x-speakeasy-entity: Setting
       type: object
+      additionalProperties:
+        type: string
+    Setting:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          value:
+            type: string
       x-examples:
         Example 1:
-          options:
-            snowMirror.activityLog.debugLog: 'false'
-            snowMirror.activityLog.traceLog: 'false'
-      properties:
-        options:
-          type: string
+          - id: snowmirror
+            value: 'false'
+          - id: snowmirror
+            value: 'false'
   securitySchemes:
     basic-authentication:
       type: http
