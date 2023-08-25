@@ -43,6 +43,10 @@ paths:
       responses:
         '200':
           description: OK
+        '400':
+          description: Bad Request
+        '415':
+          description: Unsupported Media Type
       tags:
         - Setting
     parameters: []
