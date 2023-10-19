@@ -27,6 +27,388 @@ tags:
   - name: Setting
     description: Setting
 paths:
+  /api/v1/synchronization:
+    post:
+      summary: Create a synchronization
+      description: Creates a new synchronization. Returns newly created synchronization including its ID.
+      x-speakeasy-entity-operation: Synchronization#create
+      operationId: createSynchronization
+      requestBody:
+        description: A JSON representation of the synchronization to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSynchronizationInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+  /api/v2/synchronization:
+    post:
+      summary: Create a synchronization
+      description: Creates a new synchronization. Returns newly created synchronization including its ID.
+      x-speakeasy-entity-operation: Synchronization#create
+      operationId: createSynchronizationv2
+      requestBody:
+        description: A JSON representation of the synchronization to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSynchronizationInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    parameters: []
+  '/api/v1/synchronization/{id}':
+    get:
+      summary: Get a synchronization
+      description: Returns detailed information about the synchronization.
+      x-speakeasy-entity-operation: Synchronization#get
+      operationId: getSynchronization
+      parameters:
+        - description: Id of the synchronization.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    put:
+      summary: Update a synchronization
+      description: |-
+        Updates a synchronization. The request body contains all fields (even those not being modified).
+
+        Here is how to modify a single field:
+
+        1) Retrieve the synchronization using GET endpoint.
+        2) Take the JSON response from GET endpoint and change the field. Do no touch the other fields.
+        3) Send the JSON from the previous step to the PUT endpoint.
+      x-speakeasy-entity-operation: Synchronization#update
+      operationId: updateSynchronization
+      parameters:
+        - description: Id of the synchronization to update.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: A JSON representation of the synchronization to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSynchronizationInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    delete:
+      summary: Delete a sync
+      description: Delete a synchronizations.
+      x-speakeasy-entity-operation: Synchronization#delete
+      operationId: deleteSynchronization
+      parameters:
+        - description: Id of the synchronization to delete.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Synchronization
+  '/api/v2/synchronization/{id}':
+    get:
+      summary: Get a synchronization
+      description: Returns detailed information about the synchronization.
+      x-speakeasy-entity-operation: Synchronization#get
+      operationId: getSynchronizationv2
+      parameters:
+        - description: Id of the synchronization.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    put:
+      summary: Update a synchronization
+      description: |-
+        Updates a synchronization. The request body contains all fields (even those not being modified).
+
+        Here is how to modify a single field:
+
+        1) Retrieve the synchronization using GET endpoint.
+        2) Take the JSON response from GET endpoint and change the field. Do no touch the other fields.
+        3) Send the JSON from the previous step to the PUT endpoint.
+      x-speakeasy-entity-operation: Synchronization#update
+      operationId: updateSynchronizationv2
+      parameters:
+        - description: Id of the synchronization to update.
+          in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: A JSON representation of the synchronization to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSynchronizationInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Synchronization'
+          description: OK
+      tags:
+        - Synchronization
+    delete:
+      summary: Delete a sync
+      description: Delete a synchronizations.
+      x-speakeasy-entity-operation: Synchronization#delete
+      operationId: deleteSynchronizationv2
+      parameters:
+        - description: Id of the synchronization to delete.
+          in: path
+          name: id
+          x-speakeasy-match: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Synchronization
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+  /api/v1/synchronization/action:
+    get:
+      summary: Synchronization actions
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationAction
+      description: Returns a list of all actions which can be performed on synchronizations.
+  /api/v2/synchronization/action:
+    get:
+      summary: Synchronization actions
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationActionv2
+      description: Returns a list of all actions which can be performed on synchronizations.
+    parameters: []
+  /api/v1/synchronization/export:
+    get:
+      summary: Exports all synchronizations and their settings.
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationExport
+      description: Exports all synchronizations and their settings.
+    parameters: []
+  /api/v2/synchronization/export:
+    get:
+      summary: Exports all synchronizations and their settings.
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationExportv2
+      description: Exports all synchronizations and their settings.
+    parameters: []
+  /api/v1/synchronization/import:
+    get:
+      summary: Import synchronizations
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationImport
+      description: Exports all synchronizations and their settings.
+    parameters: []
+    post:
+      summary: Import synchronizations and their settings
+      operationId: postSynchronizationImport
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+      description: |-
+        Imports synchronizations and their settings.
+
+        This endpoint has to be called with a required "existing" parameter so that SnowMirror know how to deal with existing synchronizations.
+  /api/v2/synchronization/import:
+    get:
+      summary: Import synchronizations
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    actions:
+                      - SYNCHRONIZE
+                      - CLEAN_AND_SYNCHRONIZE
+                      - STOP
+      operationId: getSynchronizationImportv2
+      description: Exports all synchronizations and their settings.
+    parameters: []
+    post:
+      summary: Import synchronizations and their settings
+      operationId: postSynchronizationImportv2
+      tags:
+        - Synchronization
+      responses:
+        '200':
+          description: OK
+      description: |-
+        Imports synchronizations and their settings.
+
+        This endpoint has to be called with a required "existing" parameter so that SnowMirror know how to deal with existing synchronizations.
   /api/v2/settings:
     post:
       summary: Update a SnowMirror setting
@@ -126,193 +508,6 @@ paths:
       description: Returns a settings of SnowMirror.
       tags:
         - Setting
-  /api/v1/synchronization:
-    post:
-      summary: Create a synchronization
-      description: Creates a new synchronization. Returns newly created synchronization including its ID.
-      x-speakeasy-entity-operation: Synchronization#create
-      operationId: createSynchronization
-      requestBody:
-        description: A JSON representation of the synchronization to create
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSynchronizationInput'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Synchronization'
-          description: OK
-      tags:
-        - Synchronization
-  '/api/v1/synchronization/{id}':
-    get:
-      summary: Get a synchronization
-      description: Returns detailed information about the synchronization.
-      x-speakeasy-entity-operation: Synchronization#get
-      operationId: getSynchronization
-      parameters:
-        - description: Id of the synchronization.
-          in: path
-          name: id
-          x-speakeasy-match: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Synchronization'
-          description: OK
-      tags:
-        - Synchronization
-    put:
-      summary: Update a synchronization
-      description: |-
-        Updates a synchronization. The request body contains all fields (even those not being modified).
-
-        Here is how to modify a single field:
-
-        1) Retrieve the synchronization using GET endpoint.
-        2) Take the JSON response from GET endpoint and change the field. Do no touch the other fields.
-        3) Send the JSON from the previous step to the PUT endpoint.
-      x-speakeasy-entity-operation: Synchronization#update
-      operationId: updateSynchronization
-      parameters:
-        - description: Id of the synchronization to update.
-          in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        description: A JSON representation of the synchronization to update
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSynchronizationInput'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Synchronization'
-          description: OK
-      tags:
-        - Synchronization
-    delete:
-      summary: Delete a sync
-      description: Delete a synchronizations.
-      x-speakeasy-entity-operation: Synchronization#delete
-      operationId: deleteSynchronization
-      parameters:
-        - description: Id of the synchronization to delete.
-          in: path
-          name: id
-          x-speakeasy-match: id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: OK
-      tags:
-        - Synchronization
-  /api/v1/synchronization/action:
-    get:
-      summary: Synchronization actions
-      tags:
-        - Synchronization
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  actions:
-                    type: array
-                    items:
-                      type: string
-                x-examples:
-                  Example 1:
-                    actions:
-                      - SYNCHRONIZE
-                      - CLEAN_AND_SYNCHRONIZE
-                      - STOP
-      operationId: getSynchronizationAction
-      description: Returns a list of all actions which can be performed on synchronizations.
-  /api/v1/synchronization/export:
-    get:
-      summary: Exports all synchronizations and their settings.
-      tags:
-        - Synchronization
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  actions:
-                    type: array
-                    items:
-                      type: string
-                x-examples:
-                  Example 1:
-                    actions:
-                      - SYNCHRONIZE
-                      - CLEAN_AND_SYNCHRONIZE
-                      - STOP
-      operationId: getSynchronizationExport
-      description: Exports all synchronizations and their settings.
-    parameters: []
-  /api/v1/synchronization/import:
-    get:
-      summary: Import synchronizations
-      tags:
-        - Synchronization
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  actions:
-                    type: array
-                    items:
-                      type: string
-                x-examples:
-                  Example 1:
-                    actions:
-                      - SYNCHRONIZE
-                      - CLEAN_AND_SYNCHRONIZE
-                      - STOP
-      operationId: getSynchronizationImport
-      description: Exports all synchronizations and their settings.
-    parameters: []
-    post:
-      summary: Import synchronizations and their settings
-      operationId: postSynchronizationImport
-      tags:
-        - Synchronization
-      responses:
-        '200':
-          description: OK
-      description: |-
-        Imports synchronizations and their settings.
-
-        This endpoint has to be called with a required "existing" parameter so that SnowMirror know how to deal with existing synchronizations.
 components:
   schemas:
     CreateSynchronizationSyncInput:
