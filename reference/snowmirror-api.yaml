@@ -27,7 +27,7 @@ tags:
   - name: Setting
     description: Setting
 paths:
-  /api/v1/settings:
+  /api/v2/settings:
     post:
       summary: Update a SnowMirror setting
       description: Updates a settings of SnowMirror. The request body contains fields those being modified.
