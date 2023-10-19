@@ -30,7 +30,7 @@ paths:
   /api/v1/settings:
     post:
       summary: Update a SnowMirror setting
-      description: Update a SnowMirror setting.
+      description: Updates a settings of SnowMirror. The request body contains fields those being modified.
       x-speakeasy-entity-operation: 'Setting#update,create'
       operationId: updateSetting
       requestBody:
@@ -47,9 +47,85 @@ paths:
           description: Bad Request
         '415':
           description: Unsupported Media Type
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    message: Internal Server Error
       tags:
         - Setting
     parameters: []
+    get:
+      summary: Get a SnowMirror setting
+      operationId: getSettings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  settings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        entityId:
+                          type: integer
+                        key:
+                          type: string
+                        value:
+                          type: string
+                        comment:
+                          type: string
+                        defaultValue:
+                          type: boolean
+                x-examples:
+                  Example 1:
+                    settings:
+                      - entityId: 294
+                        key: hibernate.format_sql
+                        value: 'false'
+                        comment: 'Pretty print the SQL in the log and console: true or false'
+                        defaultValue: true
+                      - entityId: 292
+                        key: hibernate.hbm2ddl.auto
+                        value: none
+                        comment: 'Database schema generation, possible values: validate | update | create | create-drop, if any other no action is taken'
+                        defaultValue: true
+                      - entityId: 295
+                        key: hibernate.populate
+                        value: 'false'
+                        comment: Defines if the synchronizations in the database should be scheduled on SnowMirror startup.
+                        defaultValue: true
+                      - entityId: 293
+                        key: hibernate.show_sql
+                        value: 'false'
+                        comment: 'Show SQL queries in log file: true or false.'
+                        defaultValue: true
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                x-examples:
+                  Example 1:
+                    message: Internal Server Error
+      description: Returns a settings of SnowMirror.
+      tags:
+        - Setting
   /api/v1/synchronization:
     post:
       summary: Create a synchronization
